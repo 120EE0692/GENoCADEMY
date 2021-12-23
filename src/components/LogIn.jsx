@@ -3,11 +3,30 @@ import { TextField, Typography, Button, Avatar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
+
 const LogIn = () => {
   const classes = useStyle();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [logInError, setLogInError] = useState("");
+
+  const handleLogIn = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      setLogInError("");
+    } catch (error) {
+      setLogInError(error.message);
+    }
+  };
 
   return (
     <div className={classes.container}>
@@ -53,9 +72,14 @@ const LogIn = () => {
             <div className={classes.forgotPassword}>
               <a href="#">Forgot Password ?</a>
             </div>
-
+            {logInError.length > 0 &&  logInError }
             <div className={classes.button}>
-              <Button type="submit" size="large" variant="contained">
+              <Button
+                type="submit"
+                onClick={handleLogIn}
+                size="large"
+                variant="contained"
+              >
                 LogIn
               </Button>
             </div>
