@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, Typography, Button, Avatar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const LogIn = () => {
   const classes = useStyle();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className={classes.container}>
       <div className={classes.logInWrapper}>
@@ -23,11 +27,27 @@ const LogIn = () => {
 
           <form className={classes.form}>
             <div className={classes.email}>
-              <TextField fullWidth type="email" required label="Email" />
+              <TextField
+                fullWidth
+                type="email"
+                required
+                label="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </div>
 
             <div className={classes.password}>
-              <TextField fullWidth type="password" required label="Password" />
+              <TextField
+                fullWidth
+                type="password"
+                required
+                label="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
             </div>
 
             <div className={classes.forgotPassword}>
@@ -35,7 +55,7 @@ const LogIn = () => {
             </div>
 
             <div className={classes.button}>
-              <Button size="large" variant="contained">
+              <Button type="submit" size="large" variant="contained">
                 LogIn
               </Button>
             </div>
@@ -75,8 +95,6 @@ const useStyle = makeStyles(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
-    // width: "70hw",
   },
   email: {
     marginTop: "30px",
