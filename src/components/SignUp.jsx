@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   InputLabel,
   MenuItem,
@@ -14,6 +15,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import { exams, state } from "../assets/placeholder/onBoarding";
 
+import { auth, store } from "../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+
 const SignUp = () => {
   const classes = useStyle();
 
@@ -27,6 +32,28 @@ const SignUp = () => {
     exam: "",
     state: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userData = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const userRef = setDoc(
+        doc(
+          store,
+          userInfo.joinAs === "student" ? "studentDetails" : "mentorDetails",
+          userData.user.uid
+        ),
+        userInfo
+      );
+
+      setDoc(userRef, { merge: true });
+    } catch (error) {}
+  };
 
   return (
     <div className={classes.container}>
@@ -44,13 +71,14 @@ const SignUp = () => {
             </Typography>
           </div>
 
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={handleSubmit}>
             <div className={classes.nameField}>
               <div className={classes.firstName}>
                 <TextField
                   required
                   fullWidth
                   label="First Name"
+                  value={userInfo.firstName}
                   onChange={(e) =>
                     setUserInfo({ ...userInfo, firstName: e.target.value })
                   }
@@ -60,6 +88,7 @@ const SignUp = () => {
                 <TextField
                   fullWidth
                   label="Last Name"
+                  value={userInfo.lastName}
                   onChange={(e) =>
                     setUserInfo({ ...userInfo, lastName: e.target.value })
                   }
@@ -72,6 +101,7 @@ const SignUp = () => {
                 type="email"
                 required
                 label="Email"
+                value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -84,6 +114,7 @@ const SignUp = () => {
                 type="password"
                 required
                 label="Password"
+                value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
