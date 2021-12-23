@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   InputLabel,
   MenuItem,
@@ -12,10 +12,22 @@ import {
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+import { exams, state } from "../assets/placeholder/onBoarding";
+
 const SignUp = () => {
   const classes = useStyle();
 
-  const exams = ["JEE", "NEET", "NDA", "KVPY", "NTSE"];
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    joinAs: "",
+    qualification: "",
+    exam: "",
+    state: "",
+  });
+
   return (
     <div className={classes.container}>
       <div className={classes.signUpWrapper}>
@@ -35,18 +47,47 @@ const SignUp = () => {
           <form className={classes.form}>
             <div className={classes.nameField}>
               <div className={classes.firstName}>
-                <TextField required label="First Name" />
+                <TextField
+                  required
+                  fullWidth
+                  label="First Name"
+                  onChange={(e) =>
+                    setUserInfo({ ...userInfo, firstName: e.target.value })
+                  }
+                />
               </div>
               <div className={classes.lastName}>
-                <TextField required label="Last Name" />
+                <TextField
+                  fullWidth
+                  label="Last Name"
+                  onChange={(e) =>
+                    setUserInfo({ ...userInfo, lastName: e.target.value })
+                  }
+                />
               </div>
             </div>
             <div className={classes.email}>
-              <TextField fullWidth type="email" required label="Email" />
+              <TextField
+                fullWidth
+                type="email"
+                required
+                label="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </div>
 
             <div className={classes.password}>
-              <TextField fullWidth type="password" required label="Password" />
+              <TextField
+                fullWidth
+                type="password"
+                required
+                label="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
             </div>
 
             <div className={classes.password}>
@@ -59,47 +100,79 @@ const SignUp = () => {
             </div>
 
             <div className={classes.dropDown}>
-              <InputLabel> Institution </InputLabel>
-              <Select fullWidth>
-                <MenuItem> IIT</MenuItem>
-                <MenuItem> NIT</MenuItem>
+              <InputLabel> Highest Qualification </InputLabel>
+              <Select
+                fullWidth
+                value={userInfo.qualification}
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, qualification: e.target.value })
+                }
+              >
+                <MenuItem value="class-10"> class-10</MenuItem>
+                <MenuItem value="class-11"> class-11</MenuItem>
+                <MenuItem value="class-12"> class-12</MenuItem>
               </Select>
             </div>
 
             <div className={classes.dropDown}>
               <InputLabel> Join As </InputLabel>
-              <Select fullWidth>
-                <MenuItem> Mentor</MenuItem>
-                <MenuItem> Student</MenuItem>
+              <Select
+                fullWidth
+                value={userInfo.joinAs}
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, joinAs: e.target.value })
+                }
+              >
+                <MenuItem value="mentor"> Mentor</MenuItem>
+                <MenuItem value="student"> Student</MenuItem>
               </Select>
             </div>
 
             <div className={classes.dropDown}>
               <InputLabel> Exam </InputLabel>
-              <Select value={exams} multiple fullWidth>
-                <MenuItem disabled value="">
-                  <em>Exam</em>
-                </MenuItem>
+              <Select
+                value={userInfo.exam}
+                fullWidth
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, exam: e.target.value })
+                }
+              >
                 {exams.map((examName) => (
-                  <MenuItem key={examName}>{examName}</MenuItem>
+                  <MenuItem key={examName} value={examName}>
+                    {examName}
+                  </MenuItem>
                 ))}
               </Select>
             </div>
 
             <div className={classes.dropDown}>
-              <InputLabel> Country </InputLabel>
-              <Select fullWidth>
-                <MenuItem> India</MenuItem>
-                <MenuItem> USA</MenuItem>
+              <InputLabel> State </InputLabel>
+              <Select
+                fullWidth
+                value={userInfo.state}
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, state: e.target.value })
+                }
+              >
+                {state.map((stateName) => (
+                  <MenuItem key={stateName} value={stateName}>
+                    {stateName}
+                  </MenuItem>
+                ))}
               </Select>
             </div>
 
             <div className={classes.checkBox}>
-              <Checkbox />
+              <Checkbox required />
               <p>I understand to the terms and conditions</p>
             </div>
 
-            <Button className={classes.button} size="large" variant="contained">
+            <Button
+              type="submit"
+              className={classes.button}
+              size="large"
+              variant="contained"
+            >
               SIGN UP
             </Button>
           </form>
@@ -143,13 +216,15 @@ const useStyle = makeStyles(({ theme }) => ({
   },
   nameField: {
     display: "flex",
+    justifyContent: "space-between",
     marginTop: "10px",
+    width: "80%",
   },
   firstName: {
-    marginRight: "50px",
+    width: "45%",
   },
   lastName: {
-    marginLeft: "10px",
+    width: "45%",
   },
   email: {
     marginTop: "30px",
