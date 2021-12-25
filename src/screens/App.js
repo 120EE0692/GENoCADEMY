@@ -1,5 +1,5 @@
-import LogIn from "../components/LogIn";
-import SignUp from "../components/SignUp";
+import LogIn from "../components/User/LogIn";
+import SignUp from "../components/User/SignUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Playground from "./Play";
 
