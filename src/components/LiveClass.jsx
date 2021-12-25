@@ -1,30 +1,39 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
-import { Button } from "@mui/material";
+import { Button, CardMedia, Typography, Card } from "@mui/material";
 
-const img1 =
-  "https://static.uacdn.net/thumbnail/course/jpeg/w768/8CD51A38-1A01-414D-A720-382186ED8142_special_class.jpeg";
+
+import mathImg from "../assets/images/maths.jpg"
+import chemImg from "../assets/images/chemistry.jpg"
+import phyImg from "../assets/images/physics.jpg"
 
 const LiveClassCard = () => {
   const classes = useStyles();
 
   return (
-    // <h1>Hello</h1>
-    <article className={classes.cardWrapper}>
-      <img className={classes.image} src={img1} alt="educator Image" />
-      <h1 className={classes.heading1}>React</h1>
-      <div className={classes.play}>
-        <h2 className={classes.heading2}>Abhas</h2>
-        <Button
-          type="submit"
-          className={classes.button}
-          size="large"
-          variant="contained"
-        >
-          Play
-        </Button>
-      </div>
-    </article>
+    <div className={classes.cardWrapper}>
+      <Card>
+        <div className={classes.imageWrapper}>
+          <CardMedia
+            className={classes.image}
+            component="img"
+            src={mathImg}
+          />
+        </div>
+        <div className={classes.educatorName}>Swati</div>
+        <div className={classes.heading1}>
+          <Typography bolder variant="h6" component="h1">
+            Organic Chemistry | Lec1
+          </Typography>
+        </div>
+        <div className={classes.cardBottom}>
+          <div className={classes.time}>10:00 PM - 11:00 PM</div>
+          <div classes={classes.button}>
+            <Button variant="outlined">Join</Button>
+          </div>
+        </div>
+      </Card>
+    </div>
   );
 };
 
@@ -32,27 +41,41 @@ export default LiveClassCard;
 
 const useStyles = makeStyles({
   cardWrapper: {
-    width: "200px",
-    height: "100px",
-    borderRadius: "1rem",
+    margin: "20px 0 0 30px",
+    display: "flex",
+    flexDirection: "column",
+    width: "270px",
+    height: "620px",
+  },
+  imageWrapper: {
+    width: "270px",
+    height: "250px",
   },
   image: {
-    borderRadius: "1rem",
+    width: "100%",
+    height: "100%",
+    
+  },
+  educatorName: {
+    margin: "0.2rem 0 0 0.2rem",
+    fontWeight: "bolder",
   },
   heading1: {
-    marginTop: "0.5rem",
+    margin: "0.2rem 0 0 0.2rem",
+    fontWeight: "bolder",
   },
-  heading2: {
+  cardBottom: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginRight: "0.2 rem",
+  },
+  time: {
     color: "#617d98",
     fontSize: "0.75rem",
-    marginTop: "0.5rem",
-  },
-  play: {
-    display: "flex",
-    columnGap: "13rem",
+    fontWeight: "bold",
+    margin: "0.5rem 0 0 0.2rem",
   },
   button: {
-    width: "50%",
-    height: "10%",
+    margin: "0.5rem 0.2rem 0 0",
   },
 });
