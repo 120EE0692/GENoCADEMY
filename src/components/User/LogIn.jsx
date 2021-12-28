@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 
 const LogIn = () => {
   const classes = useStyle();
@@ -21,7 +21,6 @@ const LogIn = () => {
         email,
         password
       );
-      const user = userCredential.user;
       setLogInError("");
     } catch (error) {
       setLogInError(error.message);
@@ -72,7 +71,7 @@ const LogIn = () => {
             <div className={classes.forgotPassword}>
               <a href="#">Forgot Password ?</a>
             </div>
-            {logInError.length > 0 &&  logInError }
+            {logInError.length > 0 && logInError}
             <div className={classes.button}>
               <Button
                 type="submit"

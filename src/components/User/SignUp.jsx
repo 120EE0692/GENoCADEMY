@@ -13,9 +13,9 @@ import {
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-import { exams, state } from "../assets/placeholder/onBoarding";
+import { exams, state } from "../../assets/placeholder/onBoarding";
 
-import { auth, store } from "../config/firebase";
+import { auth, store } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
