@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 
-import {
-  InputLabel,
-  MenuItem,
-  TextField,
-  Typography,
-  Select,
-  Checkbox,
-  Button,
-  Avatar,
-} from "@mui/material";
+import { InputLabel, MenuItem, TextField, Typography, Select, Checkbox, Button, Avatar, } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
@@ -43,11 +34,7 @@ const SignUp = () => {
       );
 
       const userRef = setDoc(
-        doc(
-          store,
-          userInfo.joinAs === "student" ? "studentDetails" : "mentorDetails",
-          userData.user.uid
-        ),
+        doc(store, "userDetails", userData.user.uid),
         userInfo
       );
 
