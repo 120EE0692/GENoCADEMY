@@ -10,6 +10,7 @@ const AuthState = ({ children }) => {
       const uid = user.uid;
       setId(uid);
     } else {
+      setId("");
     }
   });
 
