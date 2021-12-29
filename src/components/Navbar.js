@@ -1,19 +1,26 @@
-import React from "react";
-import { makeStyles } from "@mui/styles";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { makeStyles } from "@mui/styles";
+
+import LogoutButton from "./User/LogoutButton";
+import authContext from "../context/AuthContext";
 
 const Navbar = () => {
   const classes = useStyle();
-  const userlogged = true;
+  const id = useContext(authContext);
+
+  const userlogged = id.length > 0 ? true : false;
+
   if (userlogged) {
     return (
       <div className={classes.topBar}>
         <div className={classes.container}>
-        <div className={classes.navRight}>
-          <Link to="/" className={classes.navLink}>
-            Logo
-          </Link>
-        </div>
+          <div className={classes.navRight}>
+            <Link to="/" className={classes.navLink}>
+              Logo
+            </Link>
+          </div>
           <ul className={classes.navList}>
             <li className={classes.navItem}>
               <Link to="/doubt" className={classes.navLink}>
@@ -32,18 +39,18 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+        <LogoutButton />
       </div>
     );
   } else {
     return (
       <div className={classes.topBar}>
-        
         <div className={classes.container}>
-        <div className={classes.navRight}>
-          <Link to="/" className={classes.navLink}>
-            Logo
-          </Link>
-        </div>
+          <div className={classes.navRight}>
+            <Link to="/" className={classes.navLink}>
+              Logo
+            </Link>
+          </div>
           <ul className={classes.navList}>
             <li className={classes.navItem}>
               <Link to="/faq" className={classes.navLink}>
@@ -68,7 +75,6 @@ const Navbar = () => {
 };
 export default Navbar;
 
-
 const useStyle = makeStyles((theme) => ({
   topBar: {
     marginTop: "0",
@@ -85,8 +91,8 @@ const useStyle = makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
   },
-  navRight:{
-    position: 'relative',
+  navRight: {
+    position: "relative",
     marginLeft: "40px",
     fontSize: "16px",
     lineHeight: "28px",
@@ -115,8 +121,6 @@ const useStyle = makeStyles((theme) => ({
     },
     padding: "5px",
     borderRadius: "10px",
-
-  
   },
   navLink: {
     textDecoration: "none",
