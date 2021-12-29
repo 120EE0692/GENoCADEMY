@@ -1,6 +1,6 @@
 import React from "react";
-import LiveClassCard from "../components/LiveClass";
+import SideBar from "../components/SideBar";
 
-const Playground = () => <LiveClassCard></LiveClassCard>;
+const Playground = () => <SideBar />;
 
 export default Playground;
