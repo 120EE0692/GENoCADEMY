@@ -9,15 +9,15 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { makeStyles } from "@mui/styles";
 
 //firebase
-import { store } from "../config/firebase";
-import { collection, addDoc, setDoc } from "firebase/firestore";
+import { auth, store } from "../config/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 //context
 import authContext from "../context/AuthContext";
 
 //placeholder
 import { exams } from "../assets/placeholder/onBoarding";
-import { width } from "@mui/system";
+import { display } from "@mui/lab/node_modules/@mui/system";
 
 export default function CreateLiveClassForm() {
   const classes = useStyle();
@@ -29,10 +29,15 @@ export default function CreateLiveClassForm() {
   const [dateAndTime, setDateAndTime] = useState(new Date());
   const [maxStudents, setMaxStudets] = useState(1);
   const [message, setMessage] = useState(false);
+  var userName = "";
   const id = useContext(authContext);
-
+  const user = auth.currentUser;
+  if (user != null) {
+    userName = auth.currentUser.providerData[0].displayName;
+  }
   const createClass = () => {
     const sheduleDetials = {
+      userName,
       title,
       examName,
       meetPlatform,
