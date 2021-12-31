@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 
-import { InputLabel, MenuItem, TextField, Typography, Select, Checkbox, Button, Avatar, } from "@mui/material";
+import {
+  InputLabel,
+  MenuItem,
+  TextField,
+  Typography,
+  Select,
+  Checkbox,
+  Button,
+  Avatar,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import { exams, state } from "../../assets/placeholder/onBoarding";
 
 import { auth, store } from "../../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
@@ -32,6 +41,12 @@ const SignUp = () => {
         email,
         password
       );
+
+      updateProfile(auth.currentUser, { displayName: userInfo.firstName })
+        .then(() => {
+          console.log("working");
+        })
+        .catch((error) => console.log(error));
 
       const userRef = setDoc(
         doc(store, "userDetails", userData.user.uid),
