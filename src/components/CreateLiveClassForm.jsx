@@ -7,7 +7,6 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { makeStyles } from "@mui/styles";
-
 //firebase
 import { auth, store } from "../config/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -17,7 +16,6 @@ import authContext from "../context/AuthContext";
 
 //placeholder
 import { exams } from "../assets/placeholder/onBoarding";
-import { display } from "@mui/lab/node_modules/@mui/system";
 
 export default function CreateLiveClassForm() {
   const classes = useStyle();
@@ -146,7 +144,7 @@ export default function CreateLiveClassForm() {
   );
 }
 
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -159,9 +157,15 @@ const useStyle = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
     width: "70%",
+    [theme.breakpoints.down('md')]: {
+      width: "90%",
+    },
   },
   textField: {
     margin: "10px 0 10px 0",
     width: "50%",
+    [theme.breakpoints.down('md')]: {
+      width: "100%",
+    },
   },
 }));
