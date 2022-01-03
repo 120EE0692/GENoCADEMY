@@ -34,6 +34,7 @@ const VideoPlayer = () => {
       </div>
       <div className={classes.video}>
         <iframe
+          className={classes.video}
           width="900"
           height="600"
           src={`https://www.youtube.com/embed/${videoId}`}
@@ -46,7 +47,7 @@ const VideoPlayer = () => {
 
 export default VideoPlayer;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   wrapper: {},
   searchField: {
     display: "flex",
@@ -57,8 +58,18 @@ const useStyles = makeStyles({
   textField: {
     width: "50%",
     paddingRight: "5px",
+    [theme.breakpoints.down("md")]: {
+      width: "70%",
+      paddingRight: "0px",
+    },
   },
   video: {
     marginLeft: "2%",
+    width: "95%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "500px",
+      marginLeft: "0%",
+    },
   },
-});
+}));
