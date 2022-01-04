@@ -1,16 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //components
-import Navbar from "../components/Navbar";
 import LogIn from "../components/User/LogIn";
 import SignUp from "../components/User/SignUp";
 import Player from "./Player";
 import AllClass from "./AllClass";
 import ScheduleClass from "./ScheduleClass";
 import Playground from "./Play";
+import Nav from "../components/Nav";
+
 
 //Context
 import AuthState from "../context/AuthState";
+
 
 
 function App() {
@@ -18,7 +20,8 @@ function App() {
     <>
       <AuthState>
         <Router>
-          <Navbar />
+
+          <Nav/>
           <Routes>
             <Route exact path="/" element={<SignUp />}>
               {" "}
