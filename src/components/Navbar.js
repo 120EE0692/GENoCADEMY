@@ -121,6 +121,9 @@ const useStyle = makeStyles((theme) => ({
     },
     padding: "5px",
     borderRadius: "10px",
+    [theme.breakpoints.down('md')]: {
+      fontSize:"11px",
+    },
   },
   navLink: {
     textDecoration: "none",
