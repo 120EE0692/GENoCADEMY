@@ -56,7 +56,7 @@ export default function SideBar() {
 
   return (
     <div>
-      {["Click Me"].map((anchor) => (
+      {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer
