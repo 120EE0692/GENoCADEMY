@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 
-import {
-  InputLabel,
-  MenuItem,
-  TextField,
-  Typography,
-  Select,
-  Checkbox,
-  Button,
-  Avatar,
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
+//mui
+import { InputLabel, MenuItem, TextField, Typography } from "@mui/material";
+import { Select, Checkbox, Button, Avatar } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { makeStyles } from "@mui/styles";
 
+//placeholder
 import { exams, state } from "../../assets/placeholder/onBoarding";
 
-import { auth, store } from "../../config/firebase";
+//firebase
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, store } from "../../config/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
@@ -42,12 +37,7 @@ const SignUp = () => {
         password
       );
 
-      updateProfile(auth.currentUser, { displayName: userInfo.firstName })
-        .then(() => {
-          console.log("working");
-        })
-        .catch((error) => console.log(error));
-
+      updateProfile(auth.currentUser, { displayName: userInfo.firstName });
       const userRef = setDoc(
         doc(store, "userDetails", userData.user.uid),
         userInfo
@@ -217,16 +207,17 @@ const SignUp = () => {
 
 export default SignUp;
 
-const useStyle = makeStyles(({ theme }) => ({
+const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    width: "100hw",
     alignItems: "center",
+    margin: "3% 0 0 5%",
   },
   avatar: {
     display: "flex",
     justifyContent: "center",
+    marginTop: "2%",
   },
   heading: {
     alignItems: "center",
@@ -235,6 +226,9 @@ const useStyle = makeStyles(({ theme }) => ({
   signUpWrapper: {
     width: "50%",
     backgroundColor: "#EBFFFB",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   formBackground: {
     width: "70hw",
@@ -244,8 +238,6 @@ const useStyle = makeStyles(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
-    // width: "70hw",
   },
   nameField: {
     display: "flex",

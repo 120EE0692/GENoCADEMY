@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { TextField, Typography, Button, Avatar } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+//mui
+import { TextField, Typography, Button, Avatar } from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { makeStyles } from "@mui/styles";
+
+//firebase
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 
@@ -91,16 +94,18 @@ const LogIn = () => {
 
 export default LogIn;
 
-const useStyle = makeStyles(({ theme }) => ({
+const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
     width: "100hw",
     alignItems: "center",
+    marginTop: "5%",
   },
   avatar: {
     display: "flex",
     justifyContent: "center",
+    marginTop: "2%",
   },
   heading: {
     alignItems: "center",
@@ -109,6 +114,9 @@ const useStyle = makeStyles(({ theme }) => ({
   logInWrapper: {
     width: "50%",
     backgroundColor: "#EBFFFB",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   formBackground: {
     width: "70hw",
@@ -141,5 +149,8 @@ const useStyle = makeStyles(({ theme }) => ({
     justifyContent: "center",
     width: "50%",
     paddingBottom: "5%",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "5%",
+    },
   },
 }));
