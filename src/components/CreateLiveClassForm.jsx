@@ -28,7 +28,8 @@ export default function CreateLiveClassForm() {
   const [maxStudents, setMaxStudets] = useState(1);
   const [message, setMessage] = useState(false);
   var userName = "";
-  const id = useContext(authContext);
+  const loginUserInfo = useContext(authContext);
+  const id = loginUserInfo.id;
   const user = auth.currentUser;
   if (user != null) {
     userName = auth.currentUser.providerData[0].displayName;
@@ -157,14 +158,14 @@ const useStyle = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     width: "70%",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "90%",
     },
   },
   textField: {
     margin: "10px 0 10px 0",
     width: "50%",
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "100%",
     },
   },

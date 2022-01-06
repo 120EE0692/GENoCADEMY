@@ -5,16 +5,22 @@ import authContext from "./AuthContext";
 
 const AuthState = ({ children }) => {
   const [id, setId] = useState("");
+  const [loginUserName, setLoginUserName] = useState("");
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const uid = user.uid;
-      setId(uid);
+      setLoginUserName(user.displayName);
+      setId(user.uid);
     } else {
       setId("");
+      setLoginUserName("");
     }
   });
 
-  return <authContext.Provider value={id}>{children}</authContext.Provider>;
+  return (
+    <authContext.Provider value={{loginUserName, id}}>
+      {children}
+    </authContext.Provider>
+  );
 };
 
 export default AuthState;
