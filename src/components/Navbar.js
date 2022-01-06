@@ -8,9 +8,9 @@ import authContext from "../context/AuthContext";
 
 const Navbar = () => {
   const classes = useStyle();
-  const id = useContext(authContext);
+  const UserInfo = useContext(authContext);
 
-  const userlogged = id.length > 0 ? true : false;
+  const userlogged = UserInfo.id.length > 0 ? true : false;
 
   if (userlogged) {
     return (
