@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //mui
 import { TextField, Typography, Button, Avatar } from "@mui/material";
@@ -11,6 +12,7 @@ import { auth } from "../../config/firebase";
 
 const LogIn = () => {
   const classes = useStyle();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +27,9 @@ const LogIn = () => {
         password
       );
       setLogInError("");
+      setEmail("");
+      setPassword("");
+      navigate("/dashboard");
     } catch (error) {
       setLogInError(error.message);
     }
