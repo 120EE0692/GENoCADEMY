@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 //mui
 import { TextField, InputLabel, Button, Typography } from "@mui/material";
@@ -7,9 +8,10 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { makeStyles } from "@mui/styles";
+
 //firebase
-import { auth, store } from "../config/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { store } from "../config/firebase";
+import { collection, addDoc, getDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
 
 //context
 import authContext from "../context/AuthContext";
@@ -19,6 +21,8 @@ import { exams } from "../assets/placeholder/onBoarding";
 
 export default function CreateLiveClassForm() {
   const classes = useStyle();
+  const navigate = useNavigate();
+  const { classid } = useParams();
 
   const [title, setTitle] = useState("");
   const [examName, setExamName] = useState("");
@@ -27,13 +31,11 @@ export default function CreateLiveClassForm() {
   const [dateAndTime, setDateAndTime] = useState(new Date());
   const [maxStudents, setMaxStudets] = useState(1);
   const [message, setMessage] = useState(false);
-  var userName = "";
+
   const loginUserInfo = useContext(authContext);
   const id = loginUserInfo.id;
-  const user = auth.currentUser;
-  if (user != null) {
-    userName = auth.currentUser.providerData[0].displayName;
-  }
+  const userName = loginUserInfo.loginUserName;
+
   const createClass = () => {
     const sheduleDetials = {
       userName,
@@ -46,7 +48,10 @@ export default function CreateLiveClassForm() {
       id,
     };
     try {
-      addDoc(collection(store, "class Schedule"), sheduleDetials);
+      classid
+        ? updateDoc(doc(store, "class Schedule", classid), sheduleDetials)
+        : addDoc(collection(store, "class Schedule"), sheduleDetials);
+
       setTitle("");
       setExamName("");
       setMeetPlatform("");
@@ -60,11 +65,41 @@ export default function CreateLiveClassForm() {
       setMessage("Please Try Again");
     }
   };
+
+  const deleteClass = () => {
+    deleteDoc(doc(store, "class Schedule", classid)).then(navigate('../dashboard'))
+  }
+
+
+  useEffect(() => {
+
+    const classScheduleInfo = async () => {
+      if (classid) {
+        const docRef = doc(store, "class Schedule", classid);
+
+        const details = await getDoc(docRef);
+        let scheduleInfo;
+        if (details.exists()) {
+          scheduleInfo = details.data();
+        } else console.log("NO SUCH DOCS");
+
+        setTitle(scheduleInfo.title);
+        setExamName(scheduleInfo.examName);
+        setDateAndTime(scheduleInfo.dateAndTime);
+        setMeetPlatform(scheduleInfo.meetPlatform);
+        setMaxStudets(scheduleInfo.maxStudents);
+        setLink(scheduleInfo.link);
+      }
+    };
+
+    classScheduleInfo()
+  }, [classid]);
+
   return (
     <div className={classes.container}>
       <div className={classes.formWrapper}>
         <Typography variant="h4" component="h1">
-          Schedule a class
+          {classid ? `Update Schedule` : `Schedule a class`}
         </Typography>
 
         <div className={classes.textField}>
@@ -132,15 +167,24 @@ export default function CreateLiveClassForm() {
           />
         </div>
         <div>{message}</div>
-        <Button variant="contained" onClick={createClass}>
-          Create
-        </Button>
       </div>
+
+      <div classes={classes.buttons}>
+        <Button variant="contained" onClick={createClass}>
+          {classid ? `Update` : `Create`}
+        </Button>
+        {classid ?
+          <Button variant="contained" color="error" onClick={deleteClass}>
+            Delete
+          </Button> : <></>}
+      </div>
+
       <Snackbar
         open={message}
         autoHideDuration={6000}
         message="Class Schedule"
       />
+
     </div>
   );
 }
@@ -155,7 +199,6 @@ const useStyle = makeStyles((theme) => ({
   formWrapper: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
     width: "70%",
     [theme.breakpoints.down("md")]: {
@@ -167,6 +210,9 @@ const useStyle = makeStyles((theme) => ({
     width: "50%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
+    },
+    buttons: {
+      display: 'flex',
     },
   },
 }));
