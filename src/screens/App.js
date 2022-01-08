@@ -31,6 +31,7 @@ function App() {
             <Route exact path="/watch" element={<Player />}></Route>
             <Route exact path="/class" element={<AllClass />}></Route>
             <Route exact path="/scheduleclass" element={<ScheduleClass />} ></Route>
+            <Route exact path={`/scheduleclass/edit/:classid`} element={<ScheduleClass />} ></Route>
             <Route exact path="/dashboard" element={<Dashboard />} ></Route>
           </Routes>
         </Router>
