@@ -34,7 +34,7 @@ const MobileNavbar = () => {
       >
         <nav className={classes.navContainer} aria-label="Navigation Container">
           <ul className={classes.navList}>
-            <li className={classes.navItem}> 
+            <li className={classes.navItem}>
               <Link to="/" className={classes.navLink}>
                 Logo
               </Link>
@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
   menuIcon: {
     transform: "rotateY(180deg) rotate(-90deg)",
     zIndex: 10000,
+    marginLeft: "680px",
   },
 
   swipeableDrawer: {
