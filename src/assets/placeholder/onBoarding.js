@@ -8,7 +8,7 @@ export const exams = [
   "CLAT",
   "SSC",
   "UPSE-CSE",
-  "GATE/IES",
+  "GATE-IES",
   "CBSE-12",
   "CBSE-10",
   "CSIR",
