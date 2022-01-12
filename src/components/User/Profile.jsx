@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
 //mui
-import { TextField, Button } from '@mui/material'
+import { TextField, Button, MenuItem, InputLabel, Select } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
@@ -12,7 +12,10 @@ import authContext from "../../context/AuthContext"
 
 //firebase
 import { store } from "../../config/firebase"
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
+
+//placeholder
+import { state, exams } from "../../assets/placeholder/onBoarding"
 
 export default function Profile() {
 
@@ -28,8 +31,11 @@ export default function Profile() {
             const data = await getDoc(doc(store, "userDetails", userId))
             setUserInfo(data.data())
         })()
-    }, [userId])
+    }, [])
 
+    const updateUserProfile = async () => {
+        await updateDoc(doc(store, "userDetails", userId), userInfo)
+    }
 
     return (
         <div className={classes.wrapper}>
@@ -54,55 +60,126 @@ export default function Profile() {
                         value={userInfo?.lastName}
                         InputProps={{ readOnly: isReadOnly }}
                         variant="standard"
-                        onChange={(e) => setUserInfo({ ...userInfo, lastName: e.target.validationMessage })}
-                    />
-                </div>
-
-                <div className={classes.field}>
-                    <TextField
-                        label="Join-As"
-                        fullWidth
-                        value={userInfo?.joinAs}
-                        InputProps={{ readOnly: isReadOnly }}
-                        variant="standard"
+                        onChange={(e) => setUserInfo({ ...userInfo, lastName: e.target.value })}
                     />
                 </div>
                 <div className={classes.field}>
-                    <TextField
-                        label="Qualification"
-                        fullWidth
-                        value={userInfo?.qualification}
-                        InputProps={{ readOnly: isReadOnly }}
-                        variant="standard"
-                        onChange={(e) => setUserInfo({ ...userInfo, qualification: e.target.validationMessage })}
-                    />
+                    {isReadOnly ?
+                        <TextField
+                            label="Join-As"
+                            fullWidth
+                            value={userInfo?.joinAs}
+                            InputProps={{ readOnly: isReadOnly }}
+                            variant="standard"
+                        />
+                        :
+                        <>
+                            <InputLabel> Join As </InputLabel>
+                            <Select
+                                fullWidth
+                                variant="standard"
+                                value={userInfo.joinAs}
+                                onChange={(e) =>
+                                    setUserInfo({ ...userInfo, joinAs: e.target.value })
+                                }
+                            >
+                                <MenuItem value="mentor"> Mentor</MenuItem>
+                                <MenuItem value="student"> Student</MenuItem>
+                            </Select>
+                        </>}
                 </div>
                 <div className={classes.field}>
-                    <TextField
-                        label="Exam"
-                        fullWidth
-                        value={userInfo?.exam}
-                        InputProps={{ readOnly: isReadOnly }}
-                        variant="standard"
-                    />
+                    {isReadOnly ?
+                        <TextField
+                            label="Qualification"
+                            fullWidth
+                            value={userInfo?.qualification}
+                            InputProps={{ readOnly: isReadOnly }}
+                            variant="standard"
+                            onChange={(e) => setUserInfo({ ...userInfo, qualification: e.target.validationMessage })}
+                        />
+                        :
+                        <>
+                            <InputLabel> Qualification </InputLabel>
+                            <Select
+                                fullWidth
+                                variant="standard"
+                                value={userInfo.qualification}
+                                onChange={(e) =>
+                                    setUserInfo({ ...userInfo, qualification: e.target.value })
+                                }
+                            >
+                                <MenuItem value="class-10"> class-10</MenuItem>
+                                <MenuItem value="class-11"> class-11</MenuItem>
+                                <MenuItem value="class-12"> class-12</MenuItem>
+                            </Select>
+                        </>}
                 </div>
                 <div className={classes.field}>
-                    <TextField
-                        label="State"
-                        fullWidth
-                        value={userInfo?.state}
-                        InputProps={{ readOnly: isReadOnly }}
-                        variant="standard"
-                    />
+                    {isReadOnly ?
+                        <TextField
+                            label="Exam"
+                            fullWidth
+                            variant="standard"
+                            value={userInfo?.exam}
+                            InputProps={{ readOnly: isReadOnly }}
+                            variant="standard"
+                        />
+                        :
+                        <>
+                            <InputLabel> Exam </InputLabel>
+                            <Select
+                                value={userInfo.exam}
+                                variant="standard"
+                                fullWidth
+                                onChange={(e) =>
+                                    setUserInfo({ ...userInfo, exam: e.target.value })
+                                }
+                            >
+                                {exams.map((examName) => (
+                                    <MenuItem key={examName} value={examName}>
+                                        {examName}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </>}
+                </div>
+                <div className={classes.field}>
+                    {isReadOnly ?
+                        <TextField
+                            label="State"
+                            fullWidth
+                            value={userInfo?.state}
+                            InputProps={{ readOnly: isReadOnly }}
+                            variant="standard"
+                        />
+                        :
+                        <>
+                            <InputLabel> State </InputLabel>
+                            <Select
+                                fullWidth
+                                variant="standard"
+                                value={userInfo.state}
+                                onChange={(e) =>
+                                    setUserInfo({ ...userInfo, state: e.target.value })
+                                }
+                            >
+                                {state.map((stateName) => (
+                                    <MenuItem key={stateName} value={stateName}>
+                                        {stateName}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </>}
                 </div>
 
                 {isReadOnly ?
                     <div className={classes.editButton}>
-                        {userId === id ? <Button variant="outlined" onClick={() => setIsReadOnly(false)}>EDIT<ModeEditOutlinedIcon /> </Button> : <></>}
+                        {(userId === id) ? <Button variant="outlined" onClick={() => setIsReadOnly(false)}>EDIT<ModeEditOutlinedIcon /> </Button> : <></>}
                     </div>
                     :
                     <div className={classes.editButton}>
-                        <Button variant="contained" onClick={() => setIsReadOnly(true)}>SAVE</Button>
+                        <Button variant="contained" onClick={() => (updateUserProfile(), setIsReadOnly(true))}>SAVE</Button>
                     </div>
                 }
             </div>
