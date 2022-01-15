@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
+//mui
 import { makeStyles } from "@mui/styles";
 import { Button, CardMedia, Typography, Card } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 
-import mathImg from "../../assets/images/maths.jpg";
-import chemImg from "../../assets/images/chemistry.jpg";
-import phyImg from "../../assets/images/physics.jpg";
+//context
+import authContext from "../../context/AuthContext";
+
+//images
+// import mathImg from "../../assets/images/maths.jpg";
+// import chemImg from "../../assets/images/chemistry.jpg";
 
 const LiveClassCard = (props) => {
   const classes = useStyles();
-
+  const loginUser = useContext(authContext);
+  const loggedInUserId = loginUser.id;
   return (
     <div className={classes.wrapper}>
       <div className={classes.cardWrapper}>
@@ -17,18 +25,30 @@ const LiveClassCard = (props) => {
             <CardMedia
               className={classes.image}
               component="img"
-              src={mathImg}
+              src={require(`../../assets/images/${props.exam}.jpg`)}
             />
           </div>
           <div className={classes.educatorName}>{props.name}</div>
           <div className={classes.heading1}>
-            <Typography bolder variant="h6" component="h1">
-              {props.topic} | {props.exam}
-            </Typography>
+            <Typography>{props.topic}</Typography>
+
+            <div className={classes.editIcon}>
+              {props.id === loggedInUserId ? (
+                <Link to={`../scheduleclass/edit/${props.scheduleClassId}`}>
+                  {" "}
+                  <EditIcon />{" "}
+                </Link>
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+          <div className={classes.headingExam}>
+            <Typography>{props.exam}</Typography>
           </div>
           <div className={classes.cardBottom}>
             <div className={classes.time}>
-              {props.time.substring(0, 21)} (IST){" "}
+              {props.time?.substring(0, 21)} (IST){" "}
             </div>
             <div classes={classes.button}>
               <Button href={props.link} rel="noopener" variant="outlined">
@@ -53,7 +73,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     width: "270px",
-    height: "350px",
+    height: "370px",
   },
   imageWrapper: {
     width: "270px",
@@ -69,7 +89,15 @@ const useStyles = makeStyles({
   },
   heading1: {
     margin: "0.2rem 0 0 0.2rem",
-    fontWeight: "bolder",
+    display: "flex",
+    justifyContent: "space-between",
+    fontSize: "1rem",
+  },
+  headingExam: {
+    margin: "0 0 0 0.2rem",
+  },
+  editIcon: {
+    paddingRight: "10px",
   },
   cardBottom: {
     display: "flex",

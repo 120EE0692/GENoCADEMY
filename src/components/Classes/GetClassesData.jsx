@@ -22,14 +22,10 @@ const GetClassesData = () => {
   };
   useEffect(() => getClasses(), []);
 
-  useEffect(() => {
-    allClassInfo.map((info) => console.log(info.link));
-  }, [allClassInfo]);
-
   return (
     <div className={classes.container}>
       {allClassInfo.map((info) => (
-        <LiveClassCard name={info.userName} topic={info.title} exam={info.examName} time={info.dateAndTime.toDate().toString()} link={info.link}/>
+        <LiveClassCard key={info.classId} name={info.userName} id={info.id} topic={info.title} scheduleClassId={info.classId} exam={info.examName} time={info.dateAndTime.toDate().toString()} link={info.link} />
       ))}
     </div>
   );
