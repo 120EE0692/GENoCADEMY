@@ -8,11 +8,11 @@ import authContext from "../context/AuthContext";
 
 const Navbar = () => {
   const classes = useStyle();
-  const UserInfo = useContext(authContext);
+  const { id, joinAs } = useContext(authContext);
 
-  const userlogged = UserInfo.id.length > 0 ? true : false;
+  const isLogin = id.length ? true : false;
 
-  if (userlogged) {
+  if (isLogin) {
     return (
       <div className={classes.topBar}>
         <div className={classes.container}>
@@ -28,9 +28,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li className={classes.navItem}>
-              <Link to="/group" className={classes.navLink}>
-                Peer progress
-              </Link>
+              {joinAs == "mentor" ? (
+                <Link to="/group" className={classes.navLink}>
+                  Salary progress
+                </Link>
+              ) : (
+                <Link to="/group" className={classes.navLink}>
+                  Peer progress
+                </Link>
+              )}
             </li>
             <li className={classes.navItem}>
               <Link to="/room" className={classes.navLink}>
@@ -53,16 +59,6 @@ const Navbar = () => {
           </div>
           <ul className={classes.navList}>
             <li className={classes.navItem}>
-              <Link to="/faq" className={classes.navLink}>
-                Ask A Question
-              </Link>
-            </li>
-            <li className={classes.navItem}>
-              <Link to="/" className={classes.navLink}>
-                Get Started
-              </Link>
-            </li>
-            <li className={classes.navItem}>
               <Link to="/login" className={classes.navLink}>
                 Login
               </Link>
@@ -79,6 +75,7 @@ const useStyle = makeStyles((theme) => ({
   topBar: {
     marginTop: "0",
     backgroundColor: "#EBFFFB",
+    width: "100hw",
   },
   container: {
     display: "flex",
@@ -122,7 +119,7 @@ const useStyle = makeStyles((theme) => ({
     padding: "5px",
     borderRadius: "10px",
     [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
+      fontSize: "14px",
     },
   },
   navLink: {
