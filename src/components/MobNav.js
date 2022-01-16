@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
   menuIcon: {
     transform: "rotateY(180deg) rotate(-90deg)",
     zIndex: 10000,
-    marginLeft: "680px",
+    // marginLeft: "680px",
   },
 
   swipeableDrawer: {

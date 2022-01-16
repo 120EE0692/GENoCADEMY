@@ -24,11 +24,6 @@ const Check = ({ addTask }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await setDoc(doc(store, "checklists", "swati2"), todo);
-    } catch (error) {
-      console.log(error);
-    }
     addTask(checklist); //definition of addTask in ./ToDo/App.js
     setChecklist("");
   };
