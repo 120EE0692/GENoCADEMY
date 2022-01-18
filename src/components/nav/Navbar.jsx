@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import { makeStyles } from "@mui/styles";
 
-import LogoutButton from "./User/LogoutButton";
-import authContext from "../context/AuthContext";
-
+import LogoutButton from "../User/LogoutButton";
+import authContext from "../../context/AuthContext";
+import UserAvatar from "../Avatar";
 const Navbar = () => {
   const classes = useStyle();
   const { id, joinAs } = useContext(authContext);
@@ -22,30 +22,43 @@ const Navbar = () => {
             </Link>
           </div>
           <ul className={classes.navList}>
-            <li className={classes.navItem}>
-              <Link to="/doubt" className={classes.navLink}>
-                Doubt Class
+            <Link to="/discuss" className={classes.navLink}>
+              <li className={classes.navItem}>Forum</li>
+            </Link>
+
+            <Link to="/watch" className={classes.navLink}>
+              <li className={classes.navItem}>Study Room</li>
+            </Link>
+
+            {joinAs == "mentor" ? (
+              <Link to="/scheduleclass" className={classes.navLink}>
+                <li className={classes.navItem}>Create Class</li>
               </Link>
-            </li>
-            <li className={classes.navItem}>
-              {joinAs == "mentor" ? (
-                <Link to="/group" className={classes.navLink}>
-                  Salary progress
-                </Link>
-              ) : (
-                <Link to="/group" className={classes.navLink}>
-                  Peer progress
-                </Link>
-              )}
-            </li>
-            <li className={classes.navItem}>
-              <Link to="/room" className={classes.navLink}>
-                Study Room
+            ) : (
+              <Link to="/class" className={classes.navLink}>
+                <li className={classes.navItem}>Join Class</li>
               </Link>
+            )}
+
+            {joinAs == "mentor" ? (
+              <Link to="/scheduleclass" className={classes.navLink}>
+                <li className={classes.navItem}>My Class</li>
+              </Link>
+            ) : (
+              <Link to="/playground" className={classes.navLink}>
+                <li className={classes.navItem}>Checklist</li>
+              </Link>
+            )}
+
+            <Link to="/profile" className={classes.navLink}>
+              <li className={classes.navItem}>My profile</li>
+            </Link>
+
+            <li className={classes.navItem}>
+              <LogoutButton className={classes.navLink} />
             </li>
           </ul>
         </div>
-        <LogoutButton />
       </div>
     );
   } else {
@@ -58,11 +71,13 @@ const Navbar = () => {
             </Link>
           </div>
           <ul className={classes.navList}>
-            <li className={classes.navItem}>
-              <Link to="/login" className={classes.navLink}>
-                Login
-              </Link>
-            </li>
+            <Link to="/signup" className={classes.navLink}>
+              <li className={classes.navItem}>Sign Up</li>
+            </Link>
+
+            <Link to="/login" className={classes.navLink}>
+              <li className={classes.navItem}>Log In</li>
+            </Link>
           </ul>
         </div>
       </div>
@@ -90,7 +105,7 @@ const useStyle = makeStyles((theme) => ({
   },
   navRight: {
     position: "relative",
-    marginLeft: "40px",
+    marginLeft: "20px",
     fontSize: "16px",
     lineHeight: "28px",
     fontWeight: "400",
@@ -108,7 +123,7 @@ const useStyle = makeStyles((theme) => ({
   },
   navItem: {
     display: "inline",
-    marginLeft: "40px",
+    marginLeft: "20px",
     fontSize: "16px",
     lineHeight: "28px",
     fontWeight: "400",
@@ -125,5 +140,17 @@ const useStyle = makeStyles((theme) => ({
   navLink: {
     textDecoration: "none",
     color: "#000000",
+  },
+  logbtn: {
+    display: "inline",
+    marginLeft: "40px",
+    fontSize: "16px",
+    lineHeight: "28px",
+    fontWeight: "400",
+    padding: "5px",
+    borderRadius: "10px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+    },
   },
 }));

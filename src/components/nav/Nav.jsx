@@ -9,7 +9,7 @@ import DesktopNavbar from "./Navbar";
 import MobileNavbar from "./MobNav";
 
 //context
-import authContext from "../context/AuthContext";
+import authContext from "../../context/AuthContext";
 
 const Nav = () => {
   const theme = useTheme();
