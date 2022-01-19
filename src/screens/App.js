@@ -14,6 +14,12 @@ import MyScheduleClass from "../components/User/MyScheduleClass";
 import DiscussionForumPage from "../components/Discussions/DiscussionForumPage";
 import Checklist from "../components/checklist/ToDo/Checklist";
 
+//Route
+import {
+  ProtectedRoute,
+  ProtectedRouteEducator,
+} from "../components/ProtectedRoutes/ProtectedRoutes";
+
 //Context
 import AuthState from "../context/AuthState";
 
@@ -25,33 +31,56 @@ function App() {
           <Nav />
           <Routes>
             <Route exact path="/" element={<SignUp />} />
+            <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="/login" element={<LogIn />} />
             <Route exact path="/playground" element={<Playground />}></Route>
-            <Route exact path="/watch" element={<Player />}></Route>
-            <Route exact path="/class" element={<AllClass />}></Route>
+
+            <Route exact path="/watch" element={<ProtectedRoute />}>
+              <Route exact path="/watch" element={<Player />} />
+            </Route>
+            <Route exact path="/class" element={<ProtectedRoute />}>
+              <Route exact path="/class" element={<AllClass />} />
+            </Route>
+            <Route exact path={`/profile/:userId`} element={<ProtectedRoute />}>
+              <Route exact path={`/profile/:userId`} element={<Profile />} />
+            </Route>
+            <Route exact path="/discuss" element={<ProtectedRoute />}>
+              <Route exact path="/discuss" element={<DiscussionForumPage />} />
+            </Route>
+            <Route exact path="/checklist" element={<ProtectedRoute />}>
+              <Route exact path="/checklist" element={<Checklist />} />
+            </Route>
+            <Route exact path="/dashboard" element={<ProtectedRoute />}>
+              <Route exact path="/dashboard" element={<Dashboard />}></Route>
+            </Route>
+
             <Route
               exact
               path="/scheduleclass"
-              element={<ScheduleClass />}
-            ></Route>
+              element={<ProtectedRouteEducator />}
+            >
+              <Route exact path="/scheduleclass" element={<ScheduleClass />} />
+            </Route>
+
             <Route
               exact
               path={`/scheduleclass/edit/:classid`}
-              element={<ScheduleClass />}
-            ></Route>
-            <Route exact path="/dashboard" element={<Dashboard />}></Route>
-            <Route
-              exact
-              path={`/profile/:userId`}
-              element={<Profile />}
-            ></Route>
-            <Route
-              exact
-              path="/myscheduleclass"
-              element={<MyScheduleClass />}
-            />
-            <Route exact path="/discuss" element={<DiscussionForumPage />} />
-            <Route exact path="/checklist" element={<Checklist />} />
+              element={<ProtectedRouteEducator />}
+            >
+              <Route
+                exact
+                path={`/scheduleclass/edit/:classid`}
+                element={<ScheduleClass />}
+              />
+            </Route>
+
+            <Route exact path="/myscheduleclass" element={<ProtectedRoute />}>
+              <Route
+                exact
+                path="/myscheduleclass"
+                element={<MyScheduleClass />}
+              />
+            </Route>
           </Routes>
         </Router>
       </AuthState>
