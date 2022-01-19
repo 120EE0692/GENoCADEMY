@@ -10,6 +10,9 @@ import Playground from "./Play";
 import Nav from "../components/nav/Nav";
 import Dashboard from "./Dashboard";
 import Profile from "../components/User/Profile";
+import MyScheduleClass from "../components/User/MyScheduleClass";
+import DiscussionForumPage from "../components/Discussions/DiscussionForumPage";
+import Checklist from "../components/checklist/ToDo/Checklist";
 
 //Context
 import AuthState from "../context/AuthState";
@@ -21,10 +24,8 @@ function App() {
         <Router>
           <Nav />
           <Routes>
-            <Route exact path="/" element={<SignUp />}>
-              {" "}
-            </Route>
-            <Route exact path="/login" element={<LogIn />}></Route>
+            <Route exact path="/" element={<SignUp />} />
+            <Route exact path="/login" element={<LogIn />} />
             <Route exact path="/playground" element={<Playground />}></Route>
             <Route exact path="/watch" element={<Player />}></Route>
             <Route exact path="/class" element={<AllClass />}></Route>
@@ -44,6 +45,13 @@ function App() {
               path={`/profile/:userId`}
               element={<Profile />}
             ></Route>
+            <Route
+              exact
+              path="/myscheduleclass"
+              element={<MyScheduleClass />}
+            />
+            <Route exact path="/discuss" element={<DiscussionForumPage />} />
+            <Route exact path="/checklist" element={<Checklist />} />
           </Routes>
         </Router>
       </AuthState>
