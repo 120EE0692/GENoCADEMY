@@ -1,5 +1,5 @@
 import Comments from "./Discussions";
-
+import "./DiscussionSection.css";
 const DiscussionForumPage = () => {
   return (
     <div>
