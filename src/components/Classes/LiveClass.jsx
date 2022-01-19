@@ -34,7 +34,7 @@ const LiveClassCard = (props) => {
 
             <div className={classes.editIcon}>
               {props.id === loggedInUserId ? (
-                <Link to={`../scheduleclass/edit/${props.scheduleClassId}`}>
+                <Link to={`/scheduleclass/edit/${props.scheduleClassId}`}>
                   {" "}
                   <EditIcon />{" "}
                 </Link>
