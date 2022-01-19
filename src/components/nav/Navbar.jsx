@@ -53,11 +53,8 @@ const Navbar = () => {
             <Link to="/profile" className={classes.navLink}>
               <li className={classes.navItem}>My profile</li>
             </Link>
-
-            <li className={classes.navItem}>
-              <LogoutButton className={classes.navLink} />
-            </li>
           </ul>
+          <LogoutButton className={classes.navLink} />
         </div>
       </div>
     );
