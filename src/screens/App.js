@@ -10,6 +10,7 @@ import Playground from "./Play";
 import Nav from "../components/nav/Nav";
 import Dashboard from "./Dashboard";
 import Profile from "../components/User/Profile";
+import LandingPage from "./landing";
 import MyScheduleClass from "../components/User/MyScheduleClass";
 import DiscussionForumPage from "../components/Discussions/DiscussionForumPage";
 import Checklist from "../components/checklist/ToDo/Checklist";
@@ -30,11 +31,15 @@ function App() {
     <>
       <AuthState>
         <Router>
-          <Nav />
+          <Nav/>
+          
           <Routes>
-            <Route exact path="/" element={<SignUp />} />
-            <Route exact path="/signup" element={<SignUp />} />
-            <Route exact path="/login" element={<LogIn />} />
+            <Route exact path="/signup" element={<SignUp />}>
+              {" "}
+            </Route><Route exact path="/" element={<LandingPage />}>
+              {" "}
+            </Route>
+            <Route exact path="/login" element={<LogIn />}></Route>
             <Route exact path="/playground" element={<Playground />}></Route>
 
             <Route exact path="/watch" element={<ProtectedRoute />}>

@@ -19,11 +19,11 @@ const LogoutButton = () => {
     }
   };
   return (
-    <div>
-      <Button variant="outlined" onClick={logout}>
-        <LogoutIcon />
+    
+      <Button size="small" variant="text" onClick={logout}>
+        <LogoutIcon/>
       </Button>
-    </div>
+    
   );
 };
 
