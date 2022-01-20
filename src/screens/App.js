@@ -7,9 +7,10 @@ import Player from "./Player";
 import AllClass from "./AllClass";
 import ScheduleClass from "./ScheduleClass";
 import Playground from "./Play";
-import Nav from "../components/Nav";
+import Nav from "../components/nav/Nav";
 import Dashboard from "./Dashboard";
 import Profile from "../components/User/Profile";
+import LandingPage from "./landing";
 
 //Context
 import AuthState from "../context/AuthState";
@@ -21,10 +22,12 @@ function App() {
     <>
       <AuthState>
         <Router>
-
           <Nav/>
+          
           <Routes>
-            <Route exact path="/" element={<SignUp />}>
+            <Route exact path="/signup" element={<SignUp />}>
+              {" "}
+            </Route><Route exact path="/" element={<LandingPage />}>
               {" "}
             </Route>
             <Route exact path="/login" element={<LogIn />}></Route>
