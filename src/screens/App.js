@@ -13,6 +13,7 @@ import Profile from "../components/User/Profile";
 import MyScheduleClass from "../components/User/MyScheduleClass";
 import DiscussionForumPage from "../components/Discussions/DiscussionForumPage";
 import Checklist from "../components/checklist/ToDo/Checklist";
+import Footer from "../components/Footer";
 
 //Route
 import {
@@ -24,6 +25,7 @@ import {
 import AuthState from "../context/AuthState";
 
 function App() {
+  console.log(process.env);
   return (
     <>
       <AuthState>
@@ -82,6 +84,7 @@ function App() {
               />
             </Route>
           </Routes>
+          <Footer />
         </Router>
       </AuthState>
     </>
