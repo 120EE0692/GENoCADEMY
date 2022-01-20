@@ -5,7 +5,7 @@ import { makeStyles } from "@mui/styles";
 
 import LogoutButton from "../User/LogoutButton";
 import authContext from "../../context/AuthContext";
-import UserAvatar from "../Avatar";
+
 const Navbar = () => {
   const classes = useStyle();
   const { id, joinAs } = useContext(authContext);
@@ -41,23 +41,20 @@ const Navbar = () => {
             )}
 
             {joinAs == "mentor" ? (
-              <Link to="/scheduleclass" className={classes.navLink}>
+              <Link to="/myscheduleclass" className={classes.navLink}>
                 <li className={classes.navItem}>My Class</li>
               </Link>
             ) : (
-              <Link to="/playground" className={classes.navLink}>
+              <Link to="/checklist" className={classes.navLink}>
                 <li className={classes.navItem}>Checklist</li>
               </Link>
             )}
 
-            <Link to="/profile" className={classes.navLink}>
+            <Link to={`/profile/${id}`} className={classes.navLink}>
               <li className={classes.navItem}>My profile</li>
             </Link>
-
-            <li className={classes.navItem}>
-              <LogoutButton className={classes.navLink} />
-            </li>
           </ul>
+          <LogoutButton className={classes.navLink} />
         </div>
       </div>
     );

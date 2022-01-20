@@ -18,20 +18,20 @@ const MobileNavbar = () => {
   if (isLogin) {
     return (
       <>
-        
-          <Container className={classes.header}>
-            
-            <BarChart
-              onClick={toggleMenu}
-              onKeyDown={toggleMenu}
-              role="button"
-              tabIndex={0}
-              className={classes.menuIcon}
-              size={30}
-            />
-            
-          </Container>
-        
+
+        <Container className={classes.header}>
+
+          <BarChart
+            onClick={toggleMenu}
+            onKeyDown={toggleMenu}
+            role="button"
+            tabIndex={0}
+            className={classes.menuIcon}
+            size={30}
+          />
+
+        </Container>
+
         <div className={classes.wrapper}>
           <SwipeableDrawer
             anchor="right"
@@ -39,49 +39,58 @@ const MobileNavbar = () => {
             onClose={() => setMenuOpen(false)}
             onOpen={() => setMenuOpen(true)}
             swipeAreaWidth={5}
-            style={{ zIndex: 10001}}
-            
+            style={{ zIndex: 10001 }}
+
           >
             <nav
               className={classes.navContainer}
               aria-label="Navigation Container"
             >
               <ul className={classes.navList}>
-                
-                  <Link to="/" className={classes.navLink}>
+
+                <Link to="/" className={classes.navLink}>
                   <li className={classes.navItem}>
                     Home
-                    </li>
-                  </Link>
-                
-                
-                  <Link to="/discuss" className={classes.navLink}>
+                  </li>
+                </Link>
+
+
+                <Link to="/discuss" className={classes.navLink}>
                   <li className={classes.navItem}>
                     Forum
+                  </li>
+                </Link>
+
+
+                {joinAs == "mentor" ? (
+                  <Link to="/scheduleclass" className={classes.navLink}>
+                    <li className={classes.navItem}>
+                      Create Class</li>
+                  </Link>
+                ) : (
+                  <Link to="/class" className={classes.navLink}>
+                    <li className={classes.navItem}>
+                      Study Room
                     </li>
                   </Link>
-                
-                
-                  {joinAs == "mentor" ? (
-                    <Link to="/scheduleclass" className={classes.navLink}>
-                      <li className={classes.navItem}>
-                      Create Class</li>
-                    </Link>
-                  ) : (
-                    <Link to="/class" className={classes.navLink}>
-                      <li className={classes.navItem}>
-                      Study Room
-                      </li>
-                    </Link>
-                  )}
-                
-                
-                  <Link to="/profile" className={classes.navLink}>
+                )}
+
+                {joinAs == "mentor" ? (
+                  <Link to="/myscheduleclass" className={classes.navLink}>
+                    <li className={classes.navItem}>My Class</li>
+                  </Link>
+                ) : (
+                  <Link to="/checklist" className={classes.navLink}>
+                    <li className={classes.navItem}>Checklist</li>
+                  </Link>
+                )}
+
+                <Link to={`/profile/${id}`} className={classes.navLink}>
                   <li className={classes.navItem}>
                     My profile
-                    </li>
-                  </Link>
-                
+                  </li>
+                </Link>
+
                 <li className={classes.navItem}>
                   <LogoutButton className={classes.navLink} />
                 </li>
@@ -133,10 +142,10 @@ const useStyles = makeStyles((theme) => ({
   },
   navList: {
     marginTop: "20px",
-    marginLeft:'-20px',
+    marginLeft: '-20px',
     listStyleType: "none",
     height: "100vh",
-    
+
   },
   //I am unable to find an extra margin to the left of the buttons
   navItem: {

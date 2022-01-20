@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDI8VROHlV1SRCRDRoZVoEogerc17xQJeU",
-  authDomain: "study-hack-5eadd.firebaseapp.com",
-  projectId: "study-hack-5eadd",
-  storageBucket: "study-hack-5eadd.appspot.com",
-  messagingSenderId: "1031678995699",
-  appId: "1:1031678995699:web:829746773e46b573029b86",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
