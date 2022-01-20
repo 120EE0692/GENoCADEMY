@@ -112,6 +112,9 @@ export default function Profile() {
                                 <MenuItem value="class-10"> class-10</MenuItem>
                                 <MenuItem value="class-11"> class-11</MenuItem>
                                 <MenuItem value="class-12"> class-12</MenuItem>
+                                <MenuItem value="Undergraduate"> Undergraduate</MenuItem>
+                                <MenuItem value="Postgraduate">Postgraduate</MenuItem>
+                                
                             </Select>
                         </>}
                 </div>
