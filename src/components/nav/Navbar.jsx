@@ -109,6 +109,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#CDE4DC",
     "&:hover": {
       boxShadow: " 0 2px 2px 0 rgba(0,0,0,0.1), 0 2px 2px 0 rgba(0,0,0,0.19)",
+      transition: '0.2s ease-out  ',
     },
     padding: "5px",
     borderRadius: "7px",
@@ -127,6 +128,8 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#CDE4DC",
     "&:hover": {
       boxShadow: " 0 2px 2px 0 rgba(0,0,0,0.1), 0 2px 2px 0 rgba(0,0,0,0.19)",
+      transition: '0.2s ease-out',
+      backgroundColor: "#acd2c5",
     },
     padding: "5px",
     borderRadius: "10px",
