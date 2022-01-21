@@ -1,9 +1,16 @@
-import Comments from "./Discussions";
+import { useContext } from "react";
+//css
 import "./DiscussionSection.css";
+//components
+import Comments from "./Discussions";
+//context
+import authContext from "../../context/AuthContext"
+
 const DiscussionForumPage = () => {
+  const { id } = useContext(authContext)
   return (
     <div>
-      <Comments currentUserId="1" />
+      <Comments currentUserId={id} />
     </div>
   );
 };
