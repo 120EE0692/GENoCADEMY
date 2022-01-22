@@ -1,11 +1,13 @@
 import React from "react";
-// import SideBar from "../components/SideBar";
-// import Checklist from "../components/checklist/ToDo/App"
+import { Outlet } from "react-router-dom";
+
+import SearchEducator from "../../src/components/SearchEducator"
 
 const Playground = () => {
   return (
     <>
-      {/* <Checklist/> */}
+      <SearchEducator />
+      <Outlet />
     </>
   );
 };
