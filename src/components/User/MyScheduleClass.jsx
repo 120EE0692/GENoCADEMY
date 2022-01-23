@@ -10,17 +10,23 @@ import LiveClassCard from "../Classes/LiveClass";
 import { store } from "../../config/firebase"
 import { collection, where, query, getDocs } from "firebase/firestore";
 
-const MyScheduleClass = () => {
+const MyScheduleClass = ({ profileId }) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [myClasses, setMyClasses] = useState([])
     const { id } = useContext(AuthContext);
-
+    console.log(profileId)
     useEffect(() => {
         (async () => {
             const ref = collection(store, "class Schedule")
-            const q = query(ref, where("id", "==", id));
+            var q
+            if (profileId == id)
+                q = query(ref, where("id", "==", profileId));
+            else
+                q = query(ref, where("id", "==", profileId));
+
             const data = await getDocs(q);
+
             setMyClasses(data.docs.map((doc) => ({ ...doc.data(), classId: doc.id })))
 
             setIsLoading(false)
