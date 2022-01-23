@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer sx={{ width: "100hw" }}>
       <Box
-        sx={{ bottom: "0%", marginTop: "100px", width: "100hw" }}
+        sx={{ bottom: "0", width: "100hw" }}
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
         bgcolor="rgba(205, 228, 220, 1)"
