@@ -10,8 +10,7 @@ const VideoPlayer = () => {
   const [videoId, setVideoId] = useState("");
 
   const getId = () => {
-    const VID =
-      /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const VID = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     setVideoId(url.match(VID)[1]);
   };
 
@@ -72,5 +71,6 @@ const useStyles = makeStyles((theme) => ({
       height: "500px",
       marginLeft: "0%",
     },
+    marginBottom: "100px",
   },
 }));
