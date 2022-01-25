@@ -28,14 +28,17 @@
 .comment-form-button {
   font-size: 16px;
   padding: 8px 16px;
-  background: rgb(13, 97, 100);
+  background: #CDE4DC;
   border-radius: 8px;
+  border: none;
   color: rgba(3, 2, 2, 0.938);
 }
 
 .comment-form-button:hover:enabled {
   cursor: pointer;
-  background: rgb(37, 99, 235);
+  transition: 0.2s ease-out;
+  background: #acd2c5;
+  box-shadow: 1.5px 3px rgba(0,0,0,0.1);
 }
 
 .comment-form-button:disabled {
