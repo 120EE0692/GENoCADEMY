@@ -23,7 +23,7 @@ const SearchEducator = () => {
     }, [])
 
     useEffect(() => {
-        setFilterResult(educator.filter(eduInfo => eduInfo.firstName.toLowerCase().includes(searchKeyWord.toLowerCase())))
+        (setFilterResult(educator.filter(eduInfo => eduInfo.firstName.toLowerCase().includes(searchKeyWord.toLowerCase()) || eduInfo.exam.toLowerCase().includes(searchKeyWord.toLowerCase()))))
     }, [searchKeyWord])
 
     console.log(educator)
