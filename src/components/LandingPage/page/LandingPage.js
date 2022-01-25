@@ -5,7 +5,7 @@ import {productDataTwo } from '../Products/data';
 import Statistics from '../Statistics';
 import Features from '../Features';
 import {productData } from '../Features/data';
-import SimpleForm from './SimpleForm';
+import SimpleForm from "./SimpleForm"
 
 export default function LandingPage() {
     return (
