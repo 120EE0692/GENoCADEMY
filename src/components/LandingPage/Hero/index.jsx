@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../../nav/Nav';
+import { Link } from "react-router-dom";
 import {
   HeroContainer,
   HeroContent,
@@ -15,9 +16,9 @@ const Hero = () => {
       
       <HeroContent>
         <HeroItems>
-          <HeroH1>Let's gdf fdghdfghfd together!</HeroH1>
-          <HeroP> lorem ipsum lorem lorem ipsum lorem psum lorem lorem ipsum lorem lorem ipsum lorem</HeroP>
-          <HeroBtn>lorem lorem</HeroBtn>
+          <HeroH1>Gen-o-Cademy!</HeroH1>
+          <HeroP>Coming Together is a Beginning <br /> Keeping Together is Progress<br /> Working Together is Success.</HeroP>
+          <HeroBtn ><Link to="/dashboard" className='HeroBtnLink' style={{textDecoration:"none",color:"#339C97"}}>Dashboard </Link></HeroBtn>
         </HeroItems>
       </HeroContent>
     </HeroContainer>
