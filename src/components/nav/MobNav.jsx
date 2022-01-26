@@ -40,7 +40,6 @@ const MobileNavbar = () => {
             onOpen={() => setMenuOpen(true)}
             swipeAreaWidth={5}
             style={{ zIndex: 10001 }}
-
           >
             <nav
               className={classes.navContainer}
