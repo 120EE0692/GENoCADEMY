@@ -53,6 +53,11 @@ const Navbar = () => {
             <Link to={`/profile/${id}`} className={classes.navLink}>
               <li className={classes.navItem}>My profile</li>
             </Link>
+
+            <Link to="/chat" className={classes.navLink}>
+              <li className={classes.navItem}>Chat</li>
+            </Link>
+
           </ul>
           <LogoutButton className={classes.navLink} />
         </div>

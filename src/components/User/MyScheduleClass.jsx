@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 
 //context
 import AuthContext from "../../context/AuthContext"
@@ -10,20 +11,21 @@ import LiveClassCard from "../Classes/LiveClass";
 import { store } from "../../config/firebase"
 import { collection, where, query, getDocs } from "firebase/firestore";
 
-const MyScheduleClass = ({ profileId }) => {
+const MyScheduleClass = () => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [myClasses, setMyClasses] = useState([])
     const { id } = useContext(AuthContext);
-    console.log(profileId)
+    const { userId } = useParams();
+
     useEffect(() => {
         (async () => {
             const ref = collection(store, "class Schedule")
             var q
-            if (profileId == id)
-                q = query(ref, where("id", "==", profileId));
+            if (userId)
+                q = query(ref, where("id", "==", userId));
             else
-                q = query(ref, where("id", "==", profileId));
+                q = query(ref, where("id", "==", id));
 
             const data = await getDocs(q);
 
@@ -31,7 +33,7 @@ const MyScheduleClass = ({ profileId }) => {
 
             setIsLoading(false)
         })();
-    }, [isLoading])
+    }, [isLoading, id])
     return (
 
         isLoading ?
