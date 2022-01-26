@@ -14,6 +14,7 @@ import MyScheduleClass from "../components/User/MyScheduleClass";
 import DiscussionForumPage from "../components/Discussions/DiscussionForumPage";
 import Checklist from "../components/checklist/ToDo/Checklist";
 import Footer from "../components/Footer";
+import Chat from "../components/Chat/Chats";
 
 //Route
 import {
@@ -25,17 +26,18 @@ import {
 import AuthState from "../context/AuthState";
 
 function App() {
-  console.log(process.env);
+
   return (
     <>
       <AuthState>
         <Router>
-          <Nav/>
-          
+          <Nav />
+
           <Routes>
             <Route exact path="/signup" element={<SignUp />}>
               {" "}
-            </Route><Route exact path="/" element={<LandingPage />}>
+            </Route>
+            <Route exact path="/" element={<LandingPage />}>
               {" "}
             </Route>
             <Route exact path="/login" element={<LogIn />}></Route>
@@ -43,6 +45,9 @@ function App() {
 
             <Route exact path="/watch" element={<ProtectedRoute />}>
               <Route exact path="/watch" element={<Player />} />
+            </Route>
+            <Route exact path="/chat" element={<ProtectedRoute />}>
+              <Route exact path="/chat" element={<Chat />} />
             </Route>
             <Route exact path="/class" element={<ProtectedRoute />}>
               <Route exact path="/class" element={<AllClass />} />
