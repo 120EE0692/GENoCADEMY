@@ -6,9 +6,9 @@ import SearchEducator from "../../src/components/SearchEducator";
 const Playground = () => {
   return (
     <>
-      {/* <SearchEducator />
-      <Outlet /> */}
-      <DirectChatPage />
+       <SearchEducator/>
+      <Outlet /> 
+      {/* <DirectChatPage /> */}
     </>
   );
 };
