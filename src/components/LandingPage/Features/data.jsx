@@ -7,45 +7,48 @@ import product6 from '../../../assets/images/tutor2.jpg';
 
 export const productData = [
   {
-    img: product1,
-    alt: 'Study Rooms',
-    name: 'Study Rooms',
+    img: product6,
+    alt: 'tutor',
+    name: '1:1 Mentorship',
     desc:
-      'More focus, less distractions, ',
+      "Mentors can be searched according to students' goals. Less wastage of time surfing through the infinite resources available in the internet or running behing previous year toppers. 'Cause mentors can create courses or classes based on their experiences.",
   },
+
+
   {
     img: product2,
     alt: 'Forum',
     name: 'Discussion Forum',
     desc:
-      ' share ideas, solve each other ka queries, productive chat, QnA',
-  },
-  {
-    img: product6,
-    alt: 'tutor',
-    name: '1:1 Tutors',
-    desc:
-      'More focus, less distractions, ',
-  },
-  {
-    img: product4,
-    alt: 'Mentoship',
-    name: 'Mentoship',
-    desc:
-      'More focus, less distractions, ',
+      'No education is complete without the students engaging with the topic. An interactive discussion forum caters to the unrest curiosity of the young minds to actively discuss among themselves and clarify with the mentors.',
   },
   {
     img: product5,
     alt: 'Doubt Solving',
-    name: 'Doubt Solving Sessions',
+    name: 'Live Classes and Doubt Solving Sessions',
     desc:
-      'More focus, less distractions, ',
+      'Mentors and tutors can schedule classes or doubt solving sessions over any electronic means like GMeet or Zoom. ',
   },
+  {
+    img: product1,
+    alt: 'Study Rooms',
+    name: 'Study Rooms',
+    desc:
+      'Did you miss the tranquil of libraries in the online studying? No worries. We have the exact solution through our carefully designed Study Rooms. No advertisements, no distractions, 100% Focus.',
+  },
+  {
+    img: product4,
+    alt: 'Chat',
+    name: 'Interaction',
+    desc:
+      'An active interaction with the mentors ensures the right transit of knowledge. Students can contact with their mentors to solve their doubts, ask for guidance or simply resolve their career issues.',
+  },
+
   {
     img: product3,
     alt: 'todo',
     name: 'Effective Checklist',
     desc:
-      ' add todos, complete them, honesty checker',
+      'Tracking progress is vital. Our platform provides the means to have a reality check everytime one completes a planned task. ',
   }
 ];

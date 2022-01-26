@@ -43,11 +43,7 @@ const steps = [
     message: "Do you want to ask more questions?",
     trigger: "yn3",
   },
-  {
-    id: "cont4",
-    message: "Do you want to ask more questions?",
-    trigger: "yn4",
-  },
+
   {
     id: "cont1",
     message: "Do you want to change your category?",
@@ -57,13 +53,6 @@ const steps = [
     id: "yn3",
     options: [
       { value: 1, label: "Yes", trigger: "cat1" },
-      { value: 2, label: "No", trigger: "cont1" },
-    ],
-  },
-  {
-    id: "yn4",
-    options: [
-      { value: 1, label: "Yes", trigger: "cat3" },
       { value: 2, label: "No", trigger: "cont1" },
     ],
   },
@@ -91,8 +80,8 @@ const steps = [
     id: "cat",
     options: [
       { value: 1, label: "Student", trigger: "cat1" },
-      { value: 2, label: "Mentor", trigger: "cat2" },
-      { value: 3, label: "Tutor", trigger: "cat3" },
+      { value: 2, label: "Mentor/Tutor", trigger: "cat2" },
+     
       { value: 3, label: "Exit", end: true },
     ],
   },
@@ -104,66 +93,66 @@ const steps = [
   {
     id: "preteencat",
     options: [
-      { value: 1, label: "Student benefits?", trigger: "preteencat1" },
+      { value: 1, label: "Student Benefits", trigger: "preteencat1" },
       { value: 2, label: "How to update my Profile?", trigger: "preteencat2" },
     ],
   },
   {
     id: "preteencat1",
-    message: "Student benefits?",
+    message: "I am so happy that you are intrested in us.",
     trigger: "ans1",
   },
   {
     id: "ans1",
     message:
-      "I am so happy that you are intrested in us. XYZ is an online mentorship platform that helps students be more focussed and streamlined towards their goals. ",
+      "Here's the spectrum of benefits you get. GENoCADEMY is an online mentorship platform that helps students be more focussed and mentors to contribute towards community education. ",
     trigger: "cont3",
   },
   {
     id: "preteencat2",
     message:
-      "Sure, I will guide you through that! All you ned to do is Sign in with your existing account. Go to my profile and update the information. It is as simple as that ;)",
+      "Sure, I will guide you through that! All you ned to do is Sign in with your existing account. Go to 'MY PROFILE', update the information, SAVE, and it;s done. WOHOO!! ;)",
     trigger: "cont3",
   },
 
   {
     id: "cat2",
-    message: "What questions do you have about AQI?",
+    message: "Good to see you here, Sensei! How can I help you?",
     trigger: "teencat",
   },
   {
     id: "teencat",
     options: [
-      { value: 1, label: " AQI stands for?", trigger: "teencat1" },
-      { value: 2, label: "More about AQI..", trigger: "teencat2" },
+      { value: 1, label: "How to donate?", trigger: "teencat1" },
+      { value: 2, label: "About class", trigger: "teencat2" },
     ],
   },
   {
     id: "teencat1",
-    message: "Air Quality Index. What about AQI do you want to explore?",
+    message: "Go on the profile that you want to donate and you get a button that reads 'DONATE'. Click and proceed to pay.",
     trigger: "period",
   },
   {
     id: "period",
     options: [
-      { value: 1, label: "How does the AQI work?", trigger: "period1" },
-      { value: 2, label: "What is normal AQI?", trigger: "period2" },
+      { value: 1, label: "Demo payment", trigger: "period1" },
+      { value: 2, label: "About Donation", trigger: "period2" },
     ],
   },
   {
     id: "period1",
     message:
-      "Check out this link: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.",
+      "Here's a link that might help: https://razorpay.com/payment-links/ ",
     trigger: "cont2",
   },
   {
     id: "period2",
-    message: "Check out here: https://aqicn.org/scale/",
+    message: "Donation is just a way of giving financial assisstance for all the educational donation a mentor does through GENoCADEMY.",
     trigger: "cont2",
   },
   {
     id: "teencat2",
-    message: "What do you want to know about AQI?",
+    message: "Please tell me where you are facing an issue",
     trigger: "si",
   },
   {
@@ -171,76 +160,27 @@ const steps = [
     options: [
       {
         value: 1,
-        label: "What Does the Air Quality Index Really Show Us?",
+        label: "How to create a class?",
         trigger: "si1",
       },
-      { value: 2, label: "How to improve AQI?", trigger: "si2" },
+      { value: 2, label: "How to edit the created classes?", trigger: "si2" },
     ],
   },
   {
     id: "si1",
     message:
-      "Check out this link: https://fit.thequint.com/health-news/explaining-air-quality-index",
+      "You need to click on the 'Creat a Class' button, add all the information required to create a class, click on 'CREATE', and Voila!",
     trigger: "cont2",
   },
   {
     id: "si2",
     message:
-      "Here is something that can help: https://www.aqi.in/blog/25-tips-to-curb-air-pollution/",
+      "Click on the class you have created. You will get an option to edit. Change all that yopu need and save.",
     trigger: "cont2",
   },
 
-  {
-    id: "cat3",
-    message: "What Water quality problems / questions do you have?",
-    trigger: "adcat",
-  },
-  {
-    id: "adcat",
-    options: [
-      { value: 1, label: "Water quality index", trigger: "adcat1" },
-      { value: 2, label: "Water pollution", trigger: "adcat2" },
-    ],
-  },
-  {
-    id: "adcat1",
-    message: "What common question about WQI do you have?",
-    trigger: "qns",
-  },
-  {
-    id: "qns",
-    options: [
-      {
-        value: 1,
-        label: "What is water quality and why is it important?",
-        trigger: "no",
-      },
-      {
-        value: 2,
-        label: "What are the 6 main indicators of water quality?",
-        trigger: "ov",
-      },
-    ],
-  },
-  {
-    id: "no",
-    message:
-      "Water quality is one of the most important factors in a healthy ecosystem. Clean water supports a diversity of plants and wildlife. Though it may seem unrelated at first, our actions on land affect the quality of our water.",
 
-    trigger: "cont4",
-  },
-  {
-    id: "ov",
-    message:
-      "Water quality parameters include a wide range of chemical, physical and biological properties, with six principal indicators: dissolved oxygen, turbidity, pH, bioindicators, nitrate chemicals, and water temperature.",
-    trigger: "cont4",
-  },
-  {
-    id: "adcat2",
-    message:
-      "Something that can help you better understand water pollution: https://en.wikipedia.org/wiki/Water_pollution",
-    trigger: "qns",
-  },
+  
 ];
 
 const ThemedExample = () => (
