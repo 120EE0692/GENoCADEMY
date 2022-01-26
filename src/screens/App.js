@@ -26,7 +26,7 @@ import {
 import AuthState from "../context/AuthState";
 
 function App() {
-
+  console.log(process.env);
   return (
     <>
       <AuthState>
