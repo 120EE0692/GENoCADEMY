@@ -9,13 +9,10 @@ import {
   InputLabel,
   Select,
   Box,
-  Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
-import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import RecentActorsTwoToneIcon from "@mui/icons-material/RecentActorsTwoTone";
 //context
 import authContext from "../../context/AuthContext";
@@ -219,7 +216,12 @@ export default function Profile() {
               </>
             )}
           </Box>
-
+          <Box className={classes.idField}>
+            <TextField fullWidth
+              variant="standard"
+              label="ID"
+              value={userId} />
+          </Box>
           {isReadOnly ? (
             <div className={classes.editButton}>
               {userId === id ? (
@@ -266,7 +268,7 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
-    marginBottom: "250px",
+    marginBottom: "25px",
   },
   profileImg: {
     display: "flex",
@@ -291,6 +293,11 @@ const useStyle = makeStyles((theme) => ({
   field: {
     width: "45%",
     margin: "20px 0 5px 0",
+  },
+  idField: {
+    width: "95%",
+    display: "flex",
+    justifyContent: "start"
   },
   editButton: {
     display: "flex",

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { ChatEngine, getOrCreateChat } from "react-chat-engine";
 
+import authContext from "../../context/AuthContext"
+
 const DirectChatPage = () => {
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(true)
+  const { id, loginUserName } = useContext(authContext)
 
   function createDirectChat(creds) {
     getOrCreateChat(
@@ -12,6 +16,23 @@ const DirectChatPage = () => {
       () => setUsername("")
     );
   }
+
+  useEffect(() => {
+    if (!id)
+      return;
+    (async () => {
+      const user = await fetch('https://api.chatengine.io/users/', {
+        method: "PUT",
+        headers: { "PRIVATE-KEY": process.env.REACT_APP_CHAT_ENGINE_PRIVATE_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "username": `${loginUserName}`,
+          "secret": `${id}`,
+        })
+      })
+    })();
+    setLoading(false);
+
+  }, [loading, id])
 
   function renderChatForm(creds) {
     return (
@@ -27,13 +48,14 @@ const DirectChatPage = () => {
   }
 
   return (
-    <ChatEngine
-      height="100vh"
-      userName="Abhas"
-      userSecret="pass1234"
-      projectID="abc495ef-5166-41de-94fe-1c38615663a4"
-      renderNewChatForm={(creds) => renderChatForm(creds)}
-    />
+    <>{
+      !loading && <ChatEngine
+        height='100vh'
+        userName={loginUserName}
+        userSecret={id}
+        projectID={process.env.REACT_APP_CHAT_ENGINE_PROJECT_ID}
+      />}
+    </>
   );
 };
 

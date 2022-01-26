@@ -90,7 +90,9 @@ const MobileNavbar = () => {
                     My profile
                   </li>
                 </Link>
-
+                <Link to="/chat" className={classes.navLink}>
+                  <li className={classes.navItem}>Chat</li>
+                </Link>
                 <li className={classes.navItem}>
                   <LogoutButton className={classes.navLink} />
                 </li>
