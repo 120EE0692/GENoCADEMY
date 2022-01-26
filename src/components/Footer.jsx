@@ -138,7 +138,7 @@ const Footer = () => {
           </Grid>
           <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
             GyaanDaan &reg; {new Date().getFullYear()} | Copyright Owned by Team
-            XYZ
+            RAW NUTS
           </Box>
           <Box textAlign="center" pb={{ xs: 5, sm: 0 }}>
             <FacebookIcon sx={{ fontSize: "40px" }} />
