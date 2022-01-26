@@ -248,7 +248,7 @@ export default function Profile() {
       {userInfo?.joinAs == "mentor" ? (
         <div>
           <div className={classes.title}>
-            <h2>Schedule Class</h2>
+            <h2>Scheduled Classes</h2>
           </div>
           {userInfo?.joinAs == "mentor" ? (
             <MyScheduleClass profileId={userId} />
