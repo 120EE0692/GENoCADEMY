@@ -1,1 +1,0 @@
-Component folder of this application.
