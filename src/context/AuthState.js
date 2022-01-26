@@ -33,7 +33,7 @@ const AuthState = ({ children }) => {
           localStorage.setItem("isJoinAsEducator", "true");
       }
     })();
-  }, [id]);
+  }, [id,joinAs]);
 
   return (
     <authContext.Provider value={{ loginUserName, id, joinAs }}>
