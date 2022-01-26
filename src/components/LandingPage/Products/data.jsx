@@ -8,7 +8,7 @@ export const productDataTwo = [
     alt: 'Students',
     name: 'Be a Student',
     desc:
-      'Belgian chocolate glazed donuts covered in icing with sprinkles on top',
+      'Register as a student and reap the benefits of a interactive, engaging and classroom-like online study platform.',
     
     button: 'Register👨🏻‍🎓'
   },
@@ -17,7 +17,7 @@ export const productDataTwo = [
     alt: 'mentor',
     name: 'Be a Mentor',
     desc:
-      'Vanilla ice cream covered with caramel and chocolate glaze topped with a coco stick',
+      'A small light is all that one needs to travel the dark forest. Come join as a Mentor and enlighten the path of thousand wanderers.',
     button: 'Register📈'
   },
   {
@@ -25,7 +25,7 @@ export const productDataTwo = [
     alt: 'teacher',
     name: 'Be a Tutor',
     desc:
-      'Double fudge brownie squares topped with white chocolate pieces and macadamia nuts',
+      'Knowledge multiplies by sharing. Register yourself as a teacher and join the new generation mode of effective teaching.',
     button: 'Register👨🏽‍🏫'
   }
 ];

@@ -16,8 +16,8 @@ const Hero = () => {
       
       <HeroContent>
         <HeroItems>
-          <HeroH1>Gen-o-Cademy!</HeroH1>
-          <HeroP>Coming Together is a Beginning <br /> Keeping Together is Progress<br /> Working Together is Success.</HeroP>
+          <HeroH1>Welcome to <br/> Gen-o-Cademy</HeroH1>
+          <HeroP>Coming Together is a Beginning, <br /> Keeping Together is Progress,<br /> Working Together is Success.</HeroP>
           <HeroBtn ><Link to="/dashboard" className='HeroBtnLink' style={{textDecoration:"none",color:"#339C97"}}>Dashboard </Link></HeroBtn>
         </HeroItems>
       </HeroContent>

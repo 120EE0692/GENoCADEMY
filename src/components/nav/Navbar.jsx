@@ -73,8 +73,8 @@ const Navbar = () => {
       <div className={classes.topBar}>
         <div className={classes.container}>
           <div className={classes.navRight}>
-            <Link to="/" className={classes.navLink}>
-              Home
+          <Link to="/" className={classes.navLink}>
+              <img src={logo} height= "75px" width= "85px"/>
             </Link>
           </div>
           <ul className={classes.navList}>
