@@ -1,1 +1,0 @@
-Config folder of this application.

@@ -1,1 +1,0 @@
-Assets folder of this application.
