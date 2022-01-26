@@ -26,13 +26,12 @@ import {
 import AuthState from "../context/AuthState";
 
 function App() {
-  
   return (
     <>
       <AuthState>
         <Router>
           <Nav />
-
+        <div style={{minHeight: "80vh"}}>
           <Routes>
             <Route exact path="/signup" element={<SignUp />}>
               {" "}
@@ -93,6 +92,7 @@ function App() {
               />
             </Route>
           </Routes>
+          </div>
           <Footer />
         </Router>
       </AuthState>
