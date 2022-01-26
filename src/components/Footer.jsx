@@ -12,13 +12,14 @@ import { fontSize } from "@mui/system";
 
 const Footer = () => {
   return (
-    <footer sx={{ width: "100hw" }}>
+    <footer sx={{ width: "100hw"}}>
       <Box
-        sx={{ bottom: "0", width: "100%",marginTop:"auto" }}
+        sx={{ bottom: "0", width: "100hw",marginTop:"auto", fontWeight: "500" }}
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
         bgcolor="rgba(11, 63, 70, 0.85)"
-        color="rgba(0, 0, 0, 1)"
+        color="#fff"
+        
       >
         <Container maxWidth="lg">
           <Grid container spacing={5}>
@@ -27,33 +28,33 @@ const Footer = () => {
                 <Link
                   href="/"
                   color="inherit"
-                  sx={({ textDecoration: "none" }, { fontSize: "20px" })}
+                  sx={({ textDecoration: "none" }, { fontSize: "28px" })}
                 >
-                  XYZ TEAM
+                 TEAM RAW NUTS
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit" sx={{ textDecoration: "none" }}>
-                  Made with love .
+                  Made with ❤️ by
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit" sx={{ textDecoration: "none" }}>
-                  Swati
+                <Link href="https://github.com/Swatishree-Mahapatra" color="inherit" sx={{ textDecoration: "none" }}>
+                  Swatishree Mahapatra    
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit" sx={{ textDecoration: "none" }}>
-                  Abhas
+                <Link href="https://abhas15.netlify.app" color="inherit" sx={{ textDecoration: "none" }}>
+                  Abhas Abhirup Behera
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit" sx={{ textDecoration: "none" }}>
-                  Aashis
+                <Link href="https://github.com/120EE0692" color="inherit" sx={{ textDecoration: "none" }}>
+                  Aashish Pradhan
                 </Link>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={3} >
               <Box>
                 <Link href="/" color="inherit" sx={{ textDecoration: "none" }}>
                   About Us
