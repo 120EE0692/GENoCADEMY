@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {  useNavigate} from "react-router-dom";
+
 
 //mui
 import { InputLabel, MenuItem, TextField, Typography } from "@mui/material";
@@ -17,6 +19,7 @@ import { doc, setDoc } from "firebase/firestore";
 const SignUp = () => {
   const classes = useStyle();
 
+  const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userInfo, setUserInfo] = useState({
@@ -42,8 +45,9 @@ const SignUp = () => {
         doc(store, "userDetails", userData.user.uid),
         userInfo
       );
-
+      navigate("/dashboard");
       setDoc(userRef, { merge: true });
+      
     } catch (error) {}
   };
 

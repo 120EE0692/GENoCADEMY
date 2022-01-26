@@ -14,10 +14,10 @@ const Footer = () => {
   return (
     <footer sx={{ width: "100hw" }}>
       <Box
-        sx={{ bottom: "0", width: "100hw" }}
+        sx={{ bottom: "0", width: "100%",marginTop:"auto" }}
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
-        bgcolor="rgba(205, 228, 220, 1)"
+        bgcolor="rgba(11, 63, 70, 0.85)"
         color="rgba(0, 0, 0, 1)"
       >
         <Container maxWidth="lg">
