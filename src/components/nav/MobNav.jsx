@@ -53,14 +53,17 @@ const MobileNavbar = () => {
                   </li>
                 </Link>
 
-
-                <Link to="/discuss" className={classes.navLink}>
+                <Link to={`/dashboard`} className={classes.navLink}>
                   <li className={classes.navItem}>
-                    Forum
+                    Dashboard
                   </li>
                 </Link>
 
-
+                <Link to={`/profile/${id}`} className={classes.navLink}>
+                  <li className={classes.navItem}>
+                    My profile
+                  </li>
+                </Link>
                 {joinAs == "mentor" ? (
                   <Link to="/scheduleclass" className={classes.navLink}>
                     <li className={classes.navItem}>
@@ -84,11 +87,16 @@ const MobileNavbar = () => {
                   </Link>
                 )}
 
-                <Link to={`/profile/${id}`} className={classes.navLink}>
+                <Link to="/discuss" className={classes.navLink}>
                   <li className={classes.navItem}>
-                    My profile
+                    Forum
                   </li>
                 </Link>
+
+
+                
+
+                
                 <Link to="/chat" className={classes.navLink}>
                   <li className={classes.navItem}>Chat</li>
                 </Link>

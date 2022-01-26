@@ -22,13 +22,13 @@ const Navbar = () => {
             </Link>
           </div>
           <ul className={classes.navList}>
-            <Link to="/discuss" className={classes.navLink}>
-              <li className={classes.navItem}>Forum</li>
+          <Link to={`/dashboard`} className={classes.navLink}>
+              <li className={classes.navItem}>Dashboard</li>
             </Link>
-
-            <Link to="/watch" className={classes.navLink}>
-              <li className={classes.navItem}>Study Room</li>
+          <Link to={`/profile/${id}`} className={classes.navLink}>
+              <li className={classes.navItem}>My profile</li>
             </Link>
+            
 
             {joinAs == "mentor" ? (
               <Link to="/scheduleclass" className={classes.navLink}>
@@ -50,9 +50,14 @@ const Navbar = () => {
               </Link>
             )}
 
-            <Link to={`/profile/${id}`} className={classes.navLink}>
-              <li className={classes.navItem}>My profile</li>
+            <Link to="/discuss" className={classes.navLink}>
+              <li className={classes.navItem}>Forum</li>
             </Link>
+
+            <Link to="/watch" className={classes.navLink}>
+              <li className={classes.navItem}>Study Room</li>
+            </Link>
+            
 
             <Link to="/chat" className={classes.navLink}>
               <li className={classes.navItem}>Chat</li>
