@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 //components
 import LogIn from "../components/User/LogIn";
 import SignUp from "../components/User/SignUp";
@@ -27,6 +26,7 @@ import {
 import AuthState from "../context/AuthState";
 
 function App() {
+  
   return (
     <>
       <AuthState>

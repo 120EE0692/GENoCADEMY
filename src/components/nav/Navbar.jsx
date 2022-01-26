@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { makeStyles } from "@mui/styles";
 
+import logo from "../../assets/images/logo.png";
 import LogoutButton from "../User/LogoutButton";
 import authContext from "../../context/AuthContext";
 
@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className={classes.container}>
           <div className={classes.navRight}>
             <Link to="/" className={classes.navLink}>
-              Logo
+              <img src={logo} height= "75px" width= "85px"/>
             </Link>
           </div>
           <ul className={classes.navList}>
@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className={classes.container}>
           <div className={classes.navRight}>
             <Link to="/" className={classes.navLink}>
-              Logo
+              Home
             </Link>
           </div>
           <ul className={classes.navList}>
@@ -111,13 +111,8 @@ const useStyle = makeStyles((theme) => ({
     fontSize: "16px",
     lineHeight: "28px",
     fontWeight: "400",
-    backgroundColor: "#CDE4DC",
-    "&:hover": {
-      boxShadow: " 0 2px 2px 0 rgba(0,0,0,0.1), 0 2px 2px 0 rgba(0,0,0,0.19)",
-      transition: '0.2s ease-out  ',
-    },
-    padding: "5px",
-    borderRadius: "7px",
+    
+    
   },
 
   navList: {
@@ -133,7 +128,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#CDE4DC",
     "&:hover": {
       boxShadow: " 0 2px 2px 0 rgba(0,0,0,0.1), 0 2px 2px 0 rgba(0,0,0,0.19)",
-      transition: '0.2s ease-out',
+      transition: "0.2s ease-out",
       backgroundColor: "#acd2c5",
     },
     padding: "5px",
