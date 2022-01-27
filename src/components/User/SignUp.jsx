@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 //mui
@@ -19,7 +19,7 @@ import { doc, setDoc } from "firebase/firestore";
 const SignUp = () => {
   const classes = useStyle();
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userInfo, setUserInfo] = useState({
@@ -47,8 +47,8 @@ const SignUp = () => {
       );
       navigate("/dashboard");
       setDoc(userRef, { merge: true });
-      
-    } catch (error) {}
+
+    } catch (error) { }
   };
 
   return (
@@ -138,6 +138,8 @@ const SignUp = () => {
                 <MenuItem value="class-10"> class-10</MenuItem>
                 <MenuItem value="class-11"> class-11</MenuItem>
                 <MenuItem value="class-12"> class-12</MenuItem>
+                <MenuItem value="Undergraduate"> Undergraduate</MenuItem>
+                <MenuItem value="Postgraduate">Postgraduate</MenuItem>
               </Select>
             </div>
 
