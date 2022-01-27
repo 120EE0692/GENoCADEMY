@@ -67,7 +67,7 @@ export default function CreateLiveClassForm() {
   };
 
   const deleteClass = () => {
-    deleteDoc(doc(store, "class Schedule", classid)).then(navigate('../dashboard'))
+    deleteDoc(doc(store, "class Schedule", classid)).then(navigate('/dashboard'))
   }
 
 
@@ -96,96 +96,97 @@ export default function CreateLiveClassForm() {
   }, [classid]);
 
   return (
-    <div className={classes.container}>
-      <div className={classes.formWrapper}>
-        <Typography variant="h4" component="h1">
-          {classid ? `Update Schedule` : `Schedule a class`}
-        </Typography>
+    <form onSubmit={createClass}>
+      <div className={classes.container}>
+        <div className={classes.formWrapper}>
+          <Typography variant="h4" component="h1">
+            {classid ? `Update Schedule` : `Schedule a class`}
+          </Typography>
 
-        <div className={classes.textField}>
-          <TextField
-            fullWidth
-            label="Topic"
-            value={title}
-            onChange={(e) => setTitle(e.target.value.toUpperCase())}
-          />
-        </div>
-        <div className={classes.textField}>
-          <InputLabel> Exam </InputLabel>
-          <Select
-            fullWidth
-            value={examName}
-            onChange={(e) => setExamName(e.target.value)}
-          >
-            {exams.map((examName) => (
-              <MenuItem key={examName} value={examName}>
-                {examName}
-              </MenuItem>
-            ))}
-          </Select>
-        </div>
-        <div className={classes.textField}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
+          <div className={classes.textField}>
+            <TextField required
               fullWidth
-              renderInput={(props) => <TextField {...props} />}
-              label="DateTimePicker"
-              value={dateAndTime}
-              onChange={(newValue) => {
-                setDateAndTime(newValue);
-              }}
+              label="Topic"
+              value={title}
+              onChange={(e) => setTitle(e.target.value.toUpperCase())}
             />
-          </LocalizationProvider>
+          </div>
+          <div className={classes.textField}>
+            <InputLabel> Exam </InputLabel>
+            <Select required
+              fullWidth
+              value={examName}
+              onChange={(e) => setExamName(e.target.value)}
+            >
+              {exams.map((examName) => (
+                <MenuItem key={examName} value={examName}>
+                  {examName}
+                </MenuItem>
+              ))}
+            </Select>
+          </div>
+          <div className={classes.textField}>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DateTimePicker required
+                fullWidth
+                renderInput={(props) => <TextField {...props} />}
+                label="DateTimePicker"
+                value={dateAndTime}
+                onChange={(newValue) => {
+                  setDateAndTime(newValue);
+                }}
+              />
+            </LocalizationProvider>
+          </div>
+          <div className={classes.textField}>
+            <InputLabel> Meet Platform </InputLabel>
+            <Select required
+              value={meetPlatform}
+              fullWidth
+              onChange={(e) => setMeetPlatform(e.target.value)}
+            >
+              <MenuItem value="google"> Google Meet</MenuItem>
+              <MenuItem value="youtube"> YouTube</MenuItem>
+              <MenuItem value="zoom"> Zoom</MenuItem>
+              <MenuItem value="teams"> Teams</MenuItem>
+            </Select>
+          </div>
+          <div className={classes.textField}>
+            <TextField
+              fullWidth
+              label="Max-no-of-students"
+              value={maxStudents}
+              onChange={(e) => setMaxStudets(e.target.value)}
+            />
+          </div>
+          <div className={classes.textField}>
+            <TextField required
+              fullWidth
+              label="link"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+            />
+          </div>
+          <div>{message}</div>
         </div>
-        <div className={classes.textField}>
-          <InputLabel> Meet Platform </InputLabel>
-          <Select
-            value={meetPlatform}
-            fullWidth
-            onChange={(e) => setMeetPlatform(e.target.value)}
-          >
-            <MenuItem value="google"> Google Meet</MenuItem>
-            <MenuItem value="youtube"> YouTube</MenuItem>
-            <MenuItem value="zoom"> Zoom</MenuItem>
-            <MenuItem value="teams"> Teams</MenuItem>
-          </Select>
-        </div>
-        <div className={classes.textField}>
-          <TextField
-            fullWidth
-            label="Max-no-of-students"
-            value={maxStudents}
-            onChange={(e) => setMaxStudets(e.target.value)}
-          />
-        </div>
-        <div className={classes.textField}>
-          <TextField
-            fullWidth
-            label="link"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-          />
-        </div>
-        <div>{message}</div>
-      </div>
 
-      <div classes={classes.buttons}>
-        <Button variant="contained" onClick={createClass}>
-          {classid ? `Update` : `Create`}
-        </Button>
-        {classid ?
-          <Button variant="contained" color="error" onClick={deleteClass}>
-            Delete
-          </Button> : <></>}
-      </div>
+        <div classes={classes.buttons}>
+          <Button variant="contained" type="submit">
+            {classid ? `Update` : `Create`}
+          </Button>
+          {classid ?
+            <Button variant="contained" color="error" onClick={deleteClass}>
+              Delete
+            </Button> : <></>}
+        </div>
 
-      <Snackbar
-        open={message}
-        autoHideDuration={6000}
-        message="Class Schedule"
-      />
-
-    </div>
+        <Snackbar
+          open={message}
+          autoHideDuration={6000}
+          message="Class Schedule"
+        />
+      </div >
+    </form>
   );
 }
 
