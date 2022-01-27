@@ -216,7 +216,7 @@ const useStyle = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: "3% 0 0 5%",
+    margin: "3% 5% 5% 5%",
   },
   avatar: {
     display: "flex",
