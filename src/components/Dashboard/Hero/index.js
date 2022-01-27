@@ -21,7 +21,7 @@ const Hero = () => {
         <HeroItems>
           <HeroH1> Greetings{" "}
         <em className="name">{logInUserInfo.loginUserName?.toUpperCase()}</em>{"! "}</HeroH1>
-          <HeroP> Turn Your Dreams Into Reality!</HeroP>
+          <HeroP> Turn Your Dreams Into Reality</HeroP>
           <HeroBtn> <SearchEducator value="Search for Mentor"/></HeroBtn>
           <Outlet /> 
         </HeroItems>

@@ -72,7 +72,7 @@ const MobileNavbar = () => {
                 ) : (
                   <Link to="/class" className={classes.navLink}>
                     <li className={classes.navItem}>
-                      Study Room
+                      Join Class
                     </li>
                   </Link>
                 )}
@@ -94,7 +94,10 @@ const MobileNavbar = () => {
                 </Link>
 
 
-                
+                <Link to="/watch" className={classes.navLink}>
+                 <li className={classes.navItem}>Study Room</li>
+                </Link>
+            
 
                 
                 <Link to="/chat" className={classes.navLink}>

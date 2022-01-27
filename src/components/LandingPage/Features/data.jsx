@@ -11,7 +11,7 @@ export const productData = [
     alt: 'tutor',
     name: '1:1 Mentorship',
     desc:
-      "Mentors can be searched according to students' goals. Less wastage of time surfing through the infinite resources available in the internet or running behing previous year toppers. 'Cause mentors can create courses or classes based on their experiences.",
+      "Mentors can be searched according to students' goals. Less wastage of time surfing through the infinite resources available in the internet or running behind previous year toppers. 'Cause mentors can create courses or classes based on their experiences.",
   },
 
 
@@ -34,14 +34,14 @@ export const productData = [
     alt: 'Study Rooms',
     name: 'Study Rooms',
     desc:
-      'Did you miss the tranquil of libraries in the online studying? No worries. We have the exact solution through our carefully designed Study Rooms. No advertisements, no distractions, 100% Focus.',
+      'Did you miss the tranquil of libraries in the online studying? No worries. We have exact solution through our carefully designed Study Rooms. No advertisements, no distractions, 100% Focus.',
   },
   {
     img: product4,
     alt: 'Chat',
     name: 'Interaction',
     desc:
-      'An active interaction with the mentors ensures the right transit of knowledge. Students can contact with their mentors to solve their doubts, ask for guidance or simply resolve their career issues.',
+      'An active interaction with the mentors ensures the right transit of knowledge. Students can contact with their mentors to solve their doubts, ask for guidance or simply resolve their career issues through our in-built chat feature.',
   },
 
   {
