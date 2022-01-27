@@ -1,4 +1,4 @@
- #               Gen-O-Cadmey
+ #               Gen-O-Cademy
 ![alt text](https://cdn.discordapp.com/attachments/924914911304364042/936294797038223411/unknown.png)
 
 
