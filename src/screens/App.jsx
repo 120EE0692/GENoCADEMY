@@ -31,7 +31,7 @@ function App() {
       <AuthState>
         <Router>
           <Nav />
-        <div style={{minHeight: "80vh"}}>
+        <div style={{minHeight: "80vh",overflowX:"hidden"}}>
           <Routes>
             <Route exact path="/signup" element={<SignUp />}>
               {" "}
