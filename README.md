@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+ #               Gen-O-Cadmey
+![alt text](https://cdn.discordapp.com/attachments/924914911304364042/936294797038223411/unknown.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Gen-o-cademy is a one stop solution for the passionate,committed and enthusiastic teachers whose motive is to guide and contribute for the overall academic upliftment of the students especially for the under privileged and poor economic background. This platform is designed to bridge the gap among the mentors and students preparing for various different types of examinations like JEE, NEET, GATE etc. Now each and every child would be able to learn , prepare and get educated which is his/her birth’s right. 
+Now education would be as easily accessible as oxygen. This platform is going to mark the beginning of a new chapter in the Indian education system. 
 
-In the project directory, you can run:
+# What is it? ⛹️‍♂️
+The motto of building this application is to make the Indian education system more stronger and reachable across all horizons.
+Being a college student we know how overwhelming it is to start exploring something new. Procrastination is the biggest villain of every student’s life . So to tackle it our platform offers study room feature that enables a student to watch lectures of his choice without any distractions or clickbaits. The best part it offers is that it protects students from you tube artificial intelligence recommendations loop.
+This platform offers one to one mentorship, guidance and problem solving . Students could track their overall progress using the weekly checklist feature.
+The best part is the student can donate as per their wish to the mentor they like and the student himself could be a mentor once he pass his exams and contribute as a mentor.
 
-### `yarn start`
+# Team RAW NUTS ✨
+### Aashish Pradhan
+### Abhas Abhirup Behera
+### Swatishree Mahapatra.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Prerequisites 👨‍💻
 
-### `yarn test`
+## For users:
+Any modern web browser such as Chrome, Firfox, Brave ,Edge etc.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Test student id:
+###### email:test@student.com  
+###### password:123456  
+###### name:Joe Bloggs
+### Test mentor id:
+###### email:test@mentor.com  
+###### password:123456 
+###### name:John Smith
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## For developers:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Getting Started
+To setup the project locally follow the steps
 
-### `yarn eject`
+### Prerequisites
+##### Node.js v 16.0.0 +
+##### Yarn latest
+##### Git latest
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Step to setup project
+##### Fork the repo on Github
+##### Clone the project to your local system
+##### After cloning the repo
+##### Cd study
+##### Yarn install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Setup firebase and chatengine and add the following API key by creating a .env file in the root directory
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Firebaseapp
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+###### REACT_APP_API_KEY=
+###### REACT_APP_authDomain=
+###### REACT_APP_projectId=
+###### REACT_APP_storageBucket= study-hack-5eadd.appspot.com
+###### REACT_APP_messagingSenderId= 
+###### REACT_APP_appId= 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Chatengine
 
-### Analyzing the Bundle Size
+###### REACT_APP_CHAT_ENGINE_PROJECT_ID = 
+###### REACT_APP_CHAT_ENGINE_PRIVATE_KEY = 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+###### Yarn start
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## How we built it? 🧑‍💻
 
-### Advanced Configuration
+We used react js in the frontend and used firebase backend as a service. We also used chat engine to establish a protected and secure communication among the mentors and students. Our design was implemented using material ui. 
+As soon as a user signs up or log in , he/she is redirected to the dashboard where he could search for the mentors and visit their profile and attend their classes. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Mentors have additional features which includes :
+#### 1.Schedule Class - 
+Mentors can schedule classes according to their availability and can fix the number of students he wants to take the class of.This can help the students in one to one and one to many mentorship.
+#### 2.My classes -
+ The mentor would be able to view the classes he has scheduled and can edit the timing and details of the classes in case of any emergency.
 
-### `yarn build` fails to minify
+### Some Students specific features includes:
+#### 1. Search Filter -
+ This feature enables the student to search for mentors using mentor’s name or exam name and easily navigate to mentors profile and join their courses.
+#### 2. Study Room - 
+This feature enables a student to watch lectures of his choice without any distractions or clickbaits. The best part it offers is that it protects students from you tube artificial intelligence recommendations loop.
+#### 3. Join Class -
+Student can browse through all the classes scheduled by the mentors and can attend the class of their choice and need.
+#### 4. Checklist - 
+This feature enables students to plan and check out their plans on a regular basis. It will help them monitor their overall progress.
+#### 5. Donation - 
+If a student wishes he/she may donate as per his/her wish to the mentor he likes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Common features for students and mentors -
+#### 1.Discussion Forum - 
+It is a common platform for all the students and mentors to interact and discuss problems, strategies, tips and tricks at a common place.
+#### 2. Chat Section - 
+Here students and mentors can have one to one interaction as per their needs. This section also allows a mentor to create groups and address the students. It can also be used as an announcement section to keep the students updated.
+
+## Challenges we ran into 🥺
+
+We faced numerous challenges throughout the journey. 
+##### 1.First and foremost challenge we faced is to how to chose a correct tech stack to implement a scalable solution.
+##### 2.How to establish a safe and secure on boarding process for users.
+##### 3.State management of user.
+
+
+## Accomplishments that we're proud of 😎
+The biggest accomplishment for us was that we learned so many new things in the past month.We implemented a fully functional scalable educational website that we believe has the potential to completely transform the education system. We were able to overcome all the challenges and were able to create a completely functional prototype the way we had envisioned.It was a great journey building this site and we are most proud of the fact that it will bridge the gap of education between the poorer and richer sections of society.
+
+
+## What we learned 🤓
+We learnt to implement our ideas into a real life and scalable project. We pushed our limits to try and learn advanced concepts like state management, authentication and authorization , local storage ,fetching api’s , context api, database management, creating custom hooks , various aspects of styling , protected routing , deployment and most important git work flow.
+
+## Built With 💕
+Following technologies and libraries are used for the development of the website
+- [ ] React
+- [ ] Firebase
+- [ ] Nodejs
+- [ ] Javascript
+- [ ] Material UI
+- [ ] Chat Engine
+- [ ] RazorPay API
+- [ ] Figma
+- [ ] Vercel
+
+
+
+
+## What's next for GEN-O-cademy 
+This project is going to be the next best education model for the future generation. We are planning to add a lot of features in it such as 
+##### 1.Implementing better UI and UX.
+##### 2.Implement a proprietary chat app.
+
+
+
+
+
